@@ -74,8 +74,37 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /* fyRed*/
+  --ion-color-fyred: #df0000;
+  --ion-color-fyred-rgb: 223,0,0;
+  --ion-color-fyred-contrast: #ffffff;
+  --ion-color-fyred-contrast-rgb: 255,255,255;
+  --ion-color-fyred-shade: #c40000;
+  --ion-color-fyred-tint: #e21a1a;
+ /* fy5Blue*/
+  --ion-color-fyblue: #1b2896;
+  --ion-color-fyblue-rgb: 27,40,150;
+  --ion-color-fyblue-contrast: #ffffff;
+  --ion-color-fyblue-contrast-rgb: 255,255,255;
+  --ion-color-fyblue-shade: #182384;
+  --ion-color-fyblue-tint: #060607;
+    /* Set the background of the entire app */
+    //--ion-background-color:#1b2896;
+
+    /* Set the font family of the entire app */
+    --ion-font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  
+}
+/* Set text color of the entire app for iOS only */
+.ios {
+  --ion-text-color: #000;
 }
 
+/* Set text color of the entire app for Material Design only */
+.md {
+  --ion-text-color: #222;
+}
 @media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
@@ -145,6 +174,21 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    /* fyRed*/
+  --ion-color-fyred: #f4f5f8;
+  --ion-color-fyred-rgb: 223,0,0;
+  --ion-color-fyred-contrast: #000000;
+  --ion-color-fyred-contrast-rgb: 255,255,255;
+  --ion-color-fyred-shade: #86888f;
+  --ion-color-fyred-tint: #383a3e;
+ /* fy5Blue*/
+  --ion-color-fyblue: #f4f5f8;
+  --ion-color-fyblue-rgb: 27,40,150;
+  --ion-color-fyblue-contrast: #000000;
+  --ion-color-fyblue-contrast-rgb: 255,255,255;
+  --ion-color-fyblue-shade: #86888f;
+  --ion-color-fyblue-tint: #383a3e;
   }
 
   /*

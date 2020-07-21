@@ -24,3 +24,64 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+ 
+  .ion-color-fyblue {
+    --ion-color-base: var(--ion-color-fyblue, #1b2896) !important;
+    --ion-color-base-rgb: var(--ion-color-fyblue-rgb, 27,40,150) !important;
+    --ion-color-contrast: var(--ion-color-fyblue-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-fyblue-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-fyblue-shade, #182384) !important;
+    --ion-color-tint: var(--ion-color-fyblue-tint, #060607) !important;
+  }
+  
+  .ion-color-fyred {
+    --ion-color-base: var(--ion-color-fyred, #df0000) !important;
+    --ion-color-base-rgb: var(--ion-color-fyred-rgb, 233,0,0) !important;
+    --ion-color-contrast: var(--ion-color-fyred-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-fyred-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: var(--ion-color-fyred-shade, #c40000) !important;
+    --ion-color-tint: var(--ion-color-fyred-tint, #e21a1a) !important;
+  } 
+  .ion-color-toolbar {
+    --ion-color-base: var(--ion-color-toolbar,#6200EE);
+    --ion-color-base-rgb: var(--ion-color-toolbar-rgb,98,0,238);
+    --ion-color-contrast: var(--ion-color-toolbar-contrast,#fff);
+    --ion-color-contrast-rgb: var(--ion-color-toolbar-contrast-rgb, 255,255,255);
+    --ion-color-shade: var(--ion-color-toolbar-shade, #5600d1);
+    --ion-color-tint: var(--ion-color-toolbar-tint, #721af0);
+  }
+  .ion-color-ligherblue {
+    --ion-color-base: var(--ion-color-step-850,--ion-color-step-850);
+    --ion-color-base-rgb: var(--ion-color-ligherblue-rgb,--ion-color-step-850);
+    --ion-color-contrast: var(--ion-color-ligherblue-contrast,--ion-color-step-850);
+    --ion-color-contrast-rgb: var(--ion-color-ligherblue-contrast-rgb, 255,255,255);
+    --ion-color-shade: var(--ion-color-ligherblue-shade, #c19de0);
+    --ion-color-tint: var(--ion-color-ligherblue-tint, #dfbaff);
+  }
+// Logo Color #1b2896 #df0000 #dbb2ff
+
+
+// Custom SCSS for Common use
+ion-fab-button.fab-button-mini {
+    margin: 8px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.cardWrap{
+  ion-card-content{     
+    color:fff;
+      ion-card-subtitle:after{
+      content:"";
+      width:50px;
+      height: 2px;
+      background-color:#df0000;    
+  }  
+}
+}
+
+ion-toolbar{
+  --height:30px!important;
+  vertical-align: middle;
+}

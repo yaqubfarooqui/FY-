@@ -1,30 +1,52 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
+
+<ion-header>
+  <ion-toolbar color="toolbar">
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="showSelected"><small>{{selectedSalesPerson.Name}}</small></ion-title>
+    <ion-title *ngIf="!showSelected"><small>Sales Persons</small></ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/edit')">
+      <ion-icon name="create-outline" slot="end" ></ion-icon>
+    </ion-buttons> 
+    <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/add')">
+      <ion-icon name="add" slot="end"></ion-icon>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-buttons slot="start">
     <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
   </ion-buttons>
   <ion-title>{{Name}}</ion-title>
-  <ion-buttons slot="end" *ngIf="showSelected" icon-only >
+  <ion-buttons vertical="top" horizontal="end" slot="fixed" *ngIf="showSelected" icon-only >
     <ion-icon name="create-outline" slot="end" (click)="navigate('/home/salesPerson/edit')"></ion-icon>
-  </ion-buttons>
-  <ion-buttons slot="end" *ngIf="!showSelected" (click)="navigate('/home/salesPerson/add')">
-    <ion-icon name="add" slot="end"></ion-icon>
-  </ion-buttons>
-</ion-toolbar>
-<ion-content> 
+  </ion-buttons> 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!showSelected" (click)="navigate('/home/salesPerson/add')">
+    <ion-fab-button size="mini">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> 
+   -->
   <ion-list *ngIf="!showSelected">
-      <ion-item *ngFor="let salesPerson of salesPersonData;let i=index">
-        <ion-label (click)="showSelectedsalesPerson(i);">
-          <h3>{{salesPerson.Name}}</h3>          
-        </ion-label>        
-      </ion-item>
-    </ion-list>
+    <ion-item *ngFor="let salesPerson of salesPersonData;let i=index">
+      <ion-label (click)="showSelectedsalesPerson(i);">
+        <h3>{{salesPerson.Name}}</h3>          
+      </ion-label>        
+    </ion-item>
+  </ion-list>
 
-    <ion-list *ngIf="showSelected">
-      <ion-item *ngFor="let ky of salesPersonLabels">
-        <ion-label>
-          <h3>{{salesPersonKeyLabels[ky]}}</h3>
-          <h6>{{selectedSalesPerson[ky]}}</h6>
-        </ion-label>        
-      </ion-item>
-    </ion-list>
+  <ion-list *ngIf="showSelected">
+    <ion-item *ngFor="let ky of salesPersonLabels">        
+      <ion-label class="mlabel">
+        <span class="lblTitle">{{salesPersonKeyLabels[ky]}}</span>
+        <span class="lblValue">{{selectedSalesPerson[ky]}}</span>
+      </ion-label>  
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+
+
+ 

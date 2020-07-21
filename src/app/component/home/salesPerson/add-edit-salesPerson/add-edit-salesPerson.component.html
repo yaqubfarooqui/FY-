@@ -1,7 +1,19 @@
-<ion-toolbar>
-  <ion-icon name="arrow-back-outline" (click)="onBackButton()"></ion-icon>
-  <ion-title>{{actionType}} Sales Person</ion-title>
-</ion-toolbar>
+<ion-header>
+  <ion-toolbar color="toolbar">
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title *ngIf="showSelected"><small>{{selectedSalesPerson.Name}}</small></ion-title> -->
+    <ion-title><small>{{actionType}} Sales Person</small></ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/edit')">
+      <ion-icon name="create-outline" slot="end" ></ion-icon>
+    </ion-buttons> 
+    <!-- <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/add')">
+      <ion-icon name="add" slot="end"></ion-icon>
+    </ion-buttons>  -->
+  </ion-toolbar>
+</ion-header> 
+<ion-content>
 <form>
   <ion-item>
     <ion-label position="floating">Name </ion-label>
@@ -27,5 +39,6 @@
     <ion-label position="floating">Salary</ion-label>
     <ion-input type="text" required [(ngModel)]="sModel.Salary" name="Salary"></ion-input>
   </ion-item>
-  <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button>
+  <ion-button type="submit" color="toolbar" (click)="onSubmit()">Save</ion-button>
 </form>
+</ion-content>

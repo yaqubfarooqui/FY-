@@ -4,6 +4,7 @@
       <ion-title>Menu</ion-title>      
     </ion-toolbar>
   </ion-header>
+  
   <ion-content>
     <ion-card>
       <ion-card-header>
@@ -29,11 +30,10 @@
         <ion-icon name="paper-plane" slot="start"></ion-icon>
         <ion-label>Purchase Invoice</ion-label>
       </ion-item>
-      <ion-item (click)="navigate('/home/product')">
-        <ion-icon name="paper-plane" slot="start"></ion-icon>
-        <ion-label>Product</ion-label>
+      <ion-item>
+        <ion-icon name="heart" slot="start"></ion-icon>
+        <ion-label>Invoice</ion-label>
       </ion-item>
-      
       <ion-item (click)="logout()">
         <ion-icon name="archive" slot="start"></ion-icon>
         <ion-label>Signout</ion-label>
@@ -41,17 +41,19 @@
     </ion-list>
   </ion-content>
 </ion-menu>
-
 <div class="ion-page" id="main-content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="fyblue">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>FY15</ion-title>
+      <ion-toolbar-content class="ion-no-padding ion-padding-end ion-justify-content-between ion-align-items-center"> 
+        <img src="../../../assets/img-logo-fy5.png" width="40px" alt="FY5">
+        <img src="../../../assets/ford-logo.png" slot="end" height="15px" width="40px" alt="FY5">
+      </ion-toolbar-content>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
+  <ion-content >
     <router-outlet></router-outlet>
     </ion-content>
 </div>
