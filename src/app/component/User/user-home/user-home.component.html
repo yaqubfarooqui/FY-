@@ -1,0 +1,17 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment value="all" (ionChange)="onSelectionChange($event)">
+      <ion-segment-button value="login">
+        <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="registration">
+        <ion-label>Register</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content><router-outlet></router-outlet></ion-content>
+

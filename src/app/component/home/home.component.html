@@ -1,0 +1,58 @@
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>      
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>User1</ion-card-subtitle>
+        <ion-card-title>Sales manager</ion-card-title>
+      </ion-card-header>
+      
+    </ion-card>
+    <ion-list>
+      <ion-item (click)="navigate('/home')">
+        <ion-icon name="add" slot="start"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/company')">
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>Company</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/salesPerson')">
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Sales Person</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/purchaseInvoice')">
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Purchase Invoice</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/product')">
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Product</ion-label>
+      </ion-item>
+      
+      <ion-item (click)="logout()">
+        <ion-icon name="archive" slot="start"></ion-icon>
+        <ion-label>Signout</ion-label>
+      </ion-item>      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>FY15</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <router-outlet></router-outlet>
+    </ion-content>
+</div>
+

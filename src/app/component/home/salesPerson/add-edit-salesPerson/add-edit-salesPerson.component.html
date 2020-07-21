@@ -1,0 +1,31 @@
+<ion-toolbar>
+  <ion-icon name="arrow-back-outline" (click)="onBackButton()"></ion-icon>
+  <ion-title>{{actionType}} Sales Person</ion-title>
+</ion-toolbar>
+<form>
+  <ion-item>
+    <ion-label position="floating">Name </ion-label>
+    <ion-input type="text" required [(ngModel)]="sModel.Name" name="Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Mobile </ion-label>
+    <ion-input type="text" required [(ngModel)]="sModel.Mobile1" name="Mobile1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Mobile </ion-label>
+    <ion-input type="text" required [(ngModel)]="sModel.Mobile2" name="Mobile2"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" required [(ngModel)]="sModel.Email" name="Email"></ion-input> 
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Aadhar Number</ion-label>
+    <ion-input type="text" required [(ngModel)]="sModel.Aadhar" name="Aadhar"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Salary</ion-label>
+    <ion-input type="text" required [(ngModel)]="sModel.Salary" name="Salary"></ion-input>
+  </ion-item>
+  <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button>
+</form>

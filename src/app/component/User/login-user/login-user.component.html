@@ -1,0 +1,11 @@
+<form (ngSubmit)="login()">
+  <ion-item>
+    <ion-label position="floating">Username</ion-label>
+    <ion-input type="number" required name="mobile" [(ngModel)]="loginModel.Mobile"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" required  name="password" [(ngModel)]="loginModel.Password"></ion-input>
+  </ion-item>
+  <ion-button type="submit" color="primary">Login</ion-button>
+</form> 

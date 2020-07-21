@@ -1,0 +1,50 @@
+<ion-toolbar>
+  <ion-icon name="arrow-back-outline" (click)="onBackButton()"></ion-icon>
+  <ion-title>Add company</ion-title>
+</ion-toolbar>
+<form>
+  <ion-item>
+    <ion-label position="floating">Company Name</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.CompanyName" name="CompanyName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">First Contact Name</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.FirstContactName" name="First Contact Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">First Contact Mobile</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.FirstContactMobile" name="FirstContactMobile"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">First Contact Email</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.FirstContactEmail" name="FirstContactEmail"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Second Contact Name</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.SecondContactName" name="SecondContactName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Second Contact Mobile</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.SecondContactMobile" name="SecondContactMobile"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Second Contact Email</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.SecondContactEmail" name="SecondContactEmail"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Company Location</ion-label>
+    <ion-input type="text" required [(ngModel)]="cModel.CompanyLocation" name="CompanyLocation"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nature Of Business</ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]="cModel.NatureOfBusiness" name="BuisunessNature">
+      <ion-select-option value="b2b">B2C</ion-select-option>
+      <ion-select-option value="b2c">B2B</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">GST Number</ion-label>
+    <ion-input type="GST Number" required [(ngModel)]="cModel.GSTNumber" name="FirstName"></ion-input>
+  </ion-item>
+  <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button>
+</form>

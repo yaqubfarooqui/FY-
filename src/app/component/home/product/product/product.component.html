@@ -1,0 +1,30 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
+  </ion-buttons>
+  <ion-title>{{name}}</ion-title>
+  <ion-buttons slot="end" *ngIf="showSelected" icon-only >
+    <ion-icon name="create-outline" slot="end" (click)="navigate('/home/product/edit')"></ion-icon>
+  </ion-buttons>
+  <ion-buttons slot="end" *ngIf="!showSelected" (click)="navigate('/home/product/add')">
+    <ion-icon name="add" slot="end"></ion-icon>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content> 
+  <ion-list *ngIf="!showSelected">
+      <ion-item *ngFor="let product of productData;let i=index">
+        <ion-label (click)="showSelectedProduct(i);">
+          <h3>{{product.Name}}</h3>          
+        </ion-label>        
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="showSelected">
+      <ion-item *ngFor="let ky of productLabels">
+        <ion-label>
+          <h3>{{productLabels[ky]}}</h3>
+          <h6>{{selectedProduct[ky]}}</h6>
+        </ion-label>        
+      </ion-item>
+    </ion-list>
+</ion-content>

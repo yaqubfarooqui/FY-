@@ -1,0 +1,44 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
+  </ion-buttons>
+  <ion-title>Purchase Invoice</ion-title>
+  <ion-buttons slot="end" *ngIf="showSelected" icon-only >
+    <ion-icon name="create-outline" slot="end" (click)="navigate('/home/salesPerson/edit')"></ion-icon>
+  </ion-buttons>
+  <ion-buttons slot="end" *ngIf="!showSelected" (click)="navigate('/home/purchaseInvoice/add')">
+    <ion-icon name="add" slot="end"></ion-icon>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content> 
+  <ion-list *ngIf="!showSelected">
+      <ion-item *ngFor="let PurchaseInvoice of PurchaseInvoiceData;let i=index">
+        <ion-label (click)="showSelectedPurchaseInvoice(i);">
+          <h3>{{PurchaseInvoice.Buyer.CompanyName}}</h3>          
+          <h3>{{PurchaseInvoice.Seller.CompanyName}}</h3>
+          <!-- <h3>{{PurchaseInvoice.InvoiceDate}}</h3> -->
+        </ion-label>        
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="showSelected">
+        <ion-label>
+         <div><h3>Buyer :{{selectedPurchaseInvoice.Buyer.CompanyName}}</h3></div>
+         <div><h3>Seller :{{selectedPurchaseInvoice.Seller.CompanyName}}</h3></div>
+         <div><h3>Date : Will include this field</h3></div>
+         <div><h3>Purchase Invoice :{{selectedPurchaseInvoice.PurchaseInvoiceNumber}}</h3></div>         
+         <div><h3>Total Amount :{{selectedPurchaseInvoice.TotalAmount}}</h3></div>
+         <div><h3>Discount :{{selectedPurchaseInvoice.Discount}}</h3></div>
+         <div><h3>Net Amount :{{selectedPurchaseInvoice.NetAmount}}</h3></div>
+         <div><h3>Mode of Payment :{{selectedPurchaseInvoice.ModeOfPayment}}</h3></div>
+         <ion-item *ngFor="let Product of selectedPurchaseInvoice.Products;let i=index">
+          <ion-label>
+            <div><h3>Product :{{Product.Product.Name}}</h3></div>
+            <div><h3>Quantity :{{Product.Quantity}}</h3></div>
+            <div><h3>Amount :{{Product.Amount}}</h3></div>
+            <div><h3>GST :{{Product.GST}}</h3></div>
+          </ion-label>                  
+         </ion-item>
+        </ion-label>        
+    </ion-list>
+</ion-content>
