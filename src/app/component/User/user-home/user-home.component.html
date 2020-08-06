@@ -1,17 +1,27 @@
-<ion-header translucent>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-segment value="all" (ionChange)="onSelectionChange($event)">
-      <ion-segment-button value="login">
-        <ion-label>Login</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="registration">
-        <ion-label>Register</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
-<ion-content><router-outlet></router-outlet></ion-content>
-
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <!-- <ion-header translucent> -->
+        <div class="ion-justify-content-center logoWrap">
+          <img src="../../../assets/img-logo-fy5.png" width="50px"
+            alt="FY5"></div>
+        <!-- <ion-toolbar>
+      <ion-segment value="all" (ionChange)="onSelectionChange($event)">
+        <ion-segment-button value="login">
+          <ion-label>Login</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="registration">
+          <ion-label>Register</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar> -->
+        <!-- </ion-header>  -->
+      </ion-col>
+    </ion-row>
+ <ion-row>
+  <router-outlet></router-outlet>
+ </ion-row>
+ 
+</ion-grid>
+</ion-content>

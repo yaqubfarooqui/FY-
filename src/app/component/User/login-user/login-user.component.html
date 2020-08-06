@@ -1,11 +1,24 @@
-<form (ngSubmit)="login()">
-  <ion-item>
-    <ion-label position="floating">Username</ion-label>
+<ion-grid>
+  <ion-row>
+    <ion-col class="ion-justify-content-center">
+      <div class="loginBG">
+      <form (ngSubmit)="login()">
+  <ion-item class="item">
+    <ion-label position="stacked">Username</ion-label>
     <ion-input type="number" required name="mobile" [(ngModel)]="loginModel.Mobile"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">Password</ion-label>
+  <ion-item class="item">
+    <ion-label position="stacked">Password</ion-label>
     <ion-input type="password" required  name="password" [(ngModel)]="loginModel.Password"></ion-input>
   </ion-item>
-  <ion-button type="submit" color="primary">Login</ion-button>
+  <ion-button type="submit" color="toolbar">Login</ion-button>
 </form> 
+
+</div>
+</ion-col>
+</ion-row>
+<ion-row>
+  <div class="text-wrap"><p>Don't have account? <a routerLink="/user/registration">Sign Up</a></p></div>
+</ion-row>
+</ion-grid>
+ 
