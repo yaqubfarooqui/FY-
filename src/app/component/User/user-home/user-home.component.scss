@@ -2,17 +2,15 @@
     
     ion-content{
     --background: rgb(255,255,255);
---background: linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,1)50%, rgba(88,77,195,1) 50%, rgba(50,128,229,1) 100%) !important;
+--background: linear-gradient(to bottom,#3280e5 0px, #222b94 210px,#ffffff 210px, #ffffff) !important;
 }
-ion-toolbar{
-    --background-color:#f00;
-}
+ 
 .logoWrap{
     display: flex;
-    border-radius: 5px;
+    border-radius: 6px;
     background: #fff;
-    padding: 15px;
-    margin: 30px auto;
-    width: 80px;
+    padding: 8px;
+    margin: 25px auto;
+    width: 90px;
 }
-//}s
+//}s2849b1

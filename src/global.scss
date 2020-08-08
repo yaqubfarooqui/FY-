@@ -58,7 +58,16 @@
     --ion-color-shade: var(--ion-color-ligherblue-shade, #c19de0);
     --ion-color-tint: var(--ion-color-ligherblue-tint, #dfbaff);
   }
-// Logo Color #1b2896 #df0000 #dbb2ff
+
+  .ion-color-fybutton {
+    --ion-color-base: var(--ion-color-fybutton,#222b94);
+    --ion-color-base-rgb: var(--ion-color-fybutton-rgb,34,43,148);
+    --ion-color-contrast: var(--ion-color-fybutton-contrast,#fff);
+    --ion-color-contrast-rgb: var(--ion-color-fybutton-contrast-rgb, 255,255,255);
+    --ion-color-shade: var(--ion-color-fybutton-shade, #1e2682);
+    --ion-color-tint: var(--ion-color-fybutton-tint, #38409f);
+  }
+ // Logo Color #1b2896 #df0000 #dbb2ff
 
 
 // Custom SCSS for Common use
@@ -85,3 +94,6 @@ ion-toolbar{
   --height:30px!important;
   vertical-align: middle;
 }
+.btnFy5{
+  // border-radius: 40px;
+padding: 5px 45px;}
