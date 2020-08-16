@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 export class WebRequestService {
 
   constructor(private http: HttpClient) { }
-  configUrl = 'http://localhost:3000/Company/registercompany';
+  configUrl = 'ttp://fy5api.azurewebsites.net';
+//  configUrl = 'http://localhost:3000/Company/registercompany';
 
   private getUri(uri:string):string{
     return uri

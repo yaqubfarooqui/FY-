@@ -1,46 +1,53 @@
-<form>
-  <ion-item>
-    <ion-label position="floating">First name</ion-label>
-    <ion-input type="text" required [(ngModel)]="uModel.FirstName" name="FirstName"></ion-input>
+<div class="loginBG">
+  <form [formGroup]="registerForm" >
+   <ion-item lines="none">
+    <ion-label position="floating">Username</ion-label>
+    <ion-input type="text" formControlName="Username"></ion-input>
+    <div *ngIf="registerForm.controls['Username'].touched &&
+    registerForm.controls['Username'].invalid"
+    class="alert-danger">
+ <div *ngIf="registerForm.controls['Username'].errors &&
+ registerForm.controls['Username'].errors.required" class="invalid-feedback">
+ <ion-text color="danger"> Username is required.</ion-text></div>
+</div>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">Last name</ion-label>
-    <ion-input type="text" required [(ngModel)]="uModel.LastName" name="LastName"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Email id</ion-label>
-    <ion-input type="email" required [(ngModel)]="uModel.EmailID" name="EmailID"></ion-input>
-  </ion-item>
-  <ion-item>
+  <ion-item lines="none">
     <ion-label position="floating">Password</ion-label>
-    <ion-input type="password" required [(ngModel)]="uModel.Password" name="Password"></ion-input>
+    <ion-input type="password" formControlName="Password" name="Password"></ion-input>
+    
+    <div *ngIf="registerForm.controls['Password'].invalid &&  registerForm.controls['Password'].touched" class="invalid-feedback">
+      <ion-text color="danger" *ngIf="registerForm.controls['Password'].errors.required">Password is required</ion-text>
+      </div>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">GST Number</ion-label>
-    <ion-input type="text" required [(ngModel)]="uModel.GSTNumber" name="GSTNumber"></ion-input>
+   <ion-item lines="none">
+    <ion-label position="floating">Company Name</ion-label>
+    <ion-input type="text" formControlName="CompanyName" name="CompanyName"></ion-input>
+    
+    <div *ngIf="registerForm.controls['CompanyName'].invalid &&  registerForm.controls['CompanyName'].touched" class="invalid-feedback">
+      <ion-text color="danger" *ngIf="registerForm.controls['CompanyName'].errors.required">Company name is required</ion-text>
+      </div>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">Industry</ion-label>
-    <ion-input type="text" required [(ngModel)]="uModel.Industry" name="Industry"></ion-input>
+   <ion-item lines="none">
+    <ion-label position="floating">Email id</ion-label>
+    <ion-input type="email" formControlName="EmailID" name="EmailID"></ion-input>
+    <div *ngIf="registerForm.controls['EmailID'].invalid &&  registerForm.controls['EmailID'].touched" class="invalid-feedback">
+      <ion-text color="danger" *ngIf="registerForm.controls['EmailID'].errors.required">Email is required</ion-text>
+        <ion-text color="danger" *ngIf="registerForm.controls['EmailID'].errors.email">Email must be a valid email address</ion-text>
+  </div>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">Business nature </ion-label>
-    <ion-select placeholder="Select One" [(ngModel)]="uModel.BuisunessNature" name="BuisunessNature">
-      <ion-select-option value="b2b">B2C</ion-select-option>
-      <ion-select-option value="b2c">B2B</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Address</ion-label>
-    <ion-input type="text" required [(ngModel)]="uModel.Address" name="Address"></ion-input>
-  </ion-item>
-  <ion-item>
+   <ion-item lines="none">
     <ion-label position="floating">Mobile</ion-label>
-    <ion-input type="tel" required [(ngModel)]="uModel.Mobile" name="Mobile"></ion-input>
+    <ion-input type="tel" formControlName="Mobile" name="Mobile"></ion-input>
+    <div *ngIf="registerForm.controls['Mobile'].invalid &&  registerForm.controls['Mobile'].touched" class="invalid-feedback">
+      <ion-text color="danger" *ngIf="registerForm.controls['Mobile'].errors.required">Mobile is required</ion-text>
+            <ion-text color="danger" *ngIf="registerForm.controls['Mobile'].errors.Pattern">Only Number is allowed</ion-text>
+        <ion-text color="danger" *ngIf="registerForm.controls['Mobile'].errors.maxlength">Mobile number must be 10 characters</ion-text>
+  </div>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">Landline</ion-label>
-    <ion-input type="tel" required [(ngModel)]="uModel.LandLine" name="LandLine"></ion-input>
-  </ion-item>
-  <ion-button color="primary" (click)="registerUser()">Register</ion-button>
+  <ion-button color="fybutton" shape="round" class="ion-text-capitalize" [disabled]="registerForm.invalid" (click)="registerUser()" size="small">Register
+  </ion-button>
+
+  <!-- (click)="registerUser()" -->
 </form>
+</div>
+<div class="alRegTxt"><ion-text >Already Register? <a routerLink="/user/login">Login here</a></ion-text></div>

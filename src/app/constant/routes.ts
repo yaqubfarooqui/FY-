@@ -1,4 +1,5 @@
-const HOST = 'http://localhost:3000';
+// const HOST = 'http://localhost:3000';
+const HOST = 'http://fy5api.azurewebsites.net';
 export const LOGIN = HOST + '/User/login';
 export const user = {
     REGISTRATION: HOST + '/user/signup'
