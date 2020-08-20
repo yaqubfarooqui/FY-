@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {CompanyModel} from '../../../../Model/CompanyModel';
-import {Location} from '@angular/common';
-import {CompanyProvider} from '../companyProvider';
-import {Router} from '@angular/router';
-import {ToastController} from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { CompanyModel } from '../../../../Model/CompanyModel';
+import { Location } from '@angular/common';
+import { CompanyProvider } from '../companyProvider';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-add-edit-company',
@@ -13,17 +14,36 @@ import {ToastController} from '@ionic/angular';
 export class AddEditCompanyComponent implements OnInit {
     actionType = 'ADD';
     companyName = 'Add company';
+    companyForm: FormGroup
+    constructor(
+        private location: Location,
+        private companyProve: CompanyProvider,
+        private router: Router,
+        private toastController: ToastController,
+        private FB: FormBuilder) {
+        this.companyForm = this.FB.group({
+            name: new FormControl('', [Validators.required]),
+            firstContactName: new FormControl('', [Validators.required]),
+            firstContactEmail: new FormControl('', [Validators.required, Validators.email]),
+            firstContactMobile: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+            secondContactName: new FormControl(''),
+            secondContactEmail: new FormControl('', [Validators.email]),
+            secondContactMobile: new FormControl('', [Validators.maxLength(10)]),
+            address: new FormControl('',),
+            stateId: new FormControl(''),
+            cityId: new FormControl('',),
+            landmark: new FormControl(),
+            pinCode: new FormControl(''),
+            natureOfBusiness: new FormControl('', [Validators.required]),
+            creditLimit: new FormControl('', [Validators.required]),
+            companyType: new FormControl('', [Validators.required]),
 
-    constructor(private location: Location, private companyProve: CompanyProvider,
-                private router: Router, private toastController: ToastController) {
+        });
     }
-
     cModel: CompanyModel = new CompanyModel();
-
     onBackButton() {
         this.location.back();
     }
-
     async presentToast(message: string, color: string) {
         const toast = await this.toastController.create({
             message,
@@ -35,7 +55,7 @@ export class AddEditCompanyComponent implements OnInit {
 
     onSubmit() {
         if (this.actionType === 'ADD') {
-            this.companyProve.addCompanyForUser(this.cModel).subscribe(data => {
+            this.companyProve.addCompanyForUser(this.companyForm.value).subscribe(data => {
                 if (data.status !== false) {
                     this.presentToast('Company added', 'primary');
                     this.router.navigate(['/home/company']);
@@ -46,7 +66,7 @@ export class AddEditCompanyComponent implements OnInit {
 
             });
         } else {
-            this.companyProve.updateCompanyForUser(this.cModel).subscribe(data => {
+            this.companyProve.updateCompanyForUser(this.companyForm.value).subscribe(data => {
                 if (data.status !== false) {
                     this.presentToast('Company updated', 'primary');
                     this.router.navigate(['/home/company']);
@@ -64,7 +84,7 @@ export class AddEditCompanyComponent implements OnInit {
         this.actionType = this.location.path() === '/home/company/add' ? 'ADD' : 'EDIT';
         if (this.actionType === 'EDIT') {
             this.cModel = this.companyProve.getcModel();
-            this.companyName = this.cModel.CompanyName;
+            this.companyName = this.companyForm.value.name;
         }
     }
 

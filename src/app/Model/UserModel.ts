@@ -1,6 +1,7 @@
 
 export  class UserModel
 {
+    public Username: string
     public FirstName:string
     public LastName:string
     public EmailID:string
@@ -13,6 +14,7 @@ export  class UserModel
     public Mobile: string
     public LandLine:string
     public IsActive:boolean
+    public CompanyName:string
 }
 
 export class UserValidationStatus

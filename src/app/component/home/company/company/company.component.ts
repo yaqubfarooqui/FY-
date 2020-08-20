@@ -39,7 +39,7 @@ export class CompanyComponent implements OnInit {
     showSelectedCompany(index) {
         this.showSelected = true;
         this.selectedCompany = this.companyData[index] as CompanyModel;
-        this.companyName = this.selectedCompany.CompanyName;
+        this.companyName = this.selectedCompany.name;
     }
 
     onBackPressed() {

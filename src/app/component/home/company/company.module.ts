@@ -1,7 +1,8 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule
+ } from '@angular/forms';
 
 import { CompanyRoutingModule } from './company.routing.module';
 
@@ -14,6 +15,7 @@ import {AddEditCompanyComponent} from './add-edit-company/add-edit-company.compo
     IonicModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     CompanyRoutingModule
   ],
   declarations: [CompanyComponent, CompanyPlaceholderComponent, AddEditCompanyComponent]
