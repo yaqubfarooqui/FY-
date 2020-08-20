@@ -1,7 +1,11 @@
 ion-toolbar-content{
     display: flex;
 }
-
+ion-toolbar{
+    
+    --background: #222b94;
+--background: linear-gradient(to bottom,#3280e5 0px, #222b94 20px) !important;
+}
 .headerBG{ 
 background: #6200ee; /* Old browsers */
 background: -moz-linear-gradient(left,  #6200ee 0%, #1b2896 100%); /* FF3.6-15 */
