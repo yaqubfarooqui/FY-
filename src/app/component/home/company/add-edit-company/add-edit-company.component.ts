@@ -30,13 +30,13 @@ export class AddEditCompanyComponent implements OnInit {
             secondContactEmail: new FormControl('', [Validators.email]),
             secondContactMobile: new FormControl('', [Validators.maxLength(10)]),
             address: new FormControl('',),
-            stateId: new FormControl(''),
-            cityId: new FormControl('',),
-            landmark: new FormControl(),
+            stateId: new FormControl(1),
+            cityId: new FormControl(1,),
+            landmark: new FormControl(''),
             pinCode: new FormControl(''),
-            natureOfBusiness: new FormControl('', [Validators.required]),
-            creditLimit: new FormControl('', [Validators.required]),
-            companyType: new FormControl('', [Validators.required]),
+            natureOfBusiness: new FormControl(1, [Validators.required]),
+            creditLimit: new FormControl(202202, [Validators.required]),
+            companyType: new FormControl(2, [Validators.required]),
 
         });
     }
@@ -83,7 +83,8 @@ export class AddEditCompanyComponent implements OnInit {
     ngOnInit() {
         this.actionType = this.location.path() === '/home/company/add' ? 'ADD' : 'EDIT';
         if (this.actionType === 'EDIT') {
-            this.cModel = this.companyProve.getcModel();
+            const cVal = this.companyProve.getcModel();
+            this.companyForm.patchValue(cVal);
             this.companyName = this.companyForm.value.name;
         }
     }

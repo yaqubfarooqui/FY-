@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {CompanyProvider} from '../companyProvider';
-import {CompanyModel} from 'src/app/Model/CompanyModel';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CompanyProvider } from '../companyProvider';
+import { CompanyModel } from 'src/app/Model/CompanyModel';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-company',
@@ -30,9 +30,12 @@ export class CompanyComponent implements OnInit {
     };
 
     private loadCompany() {
-        this.cProvider.getCompanyForUser().subscribe((data) => {
-            this.companyData = data.Data;
-            this.selectedCompany = data.Data[0];
+        this.cProvider.getCompanyForUser().subscribe((data:any) => {
+            if (data) {
+                this.companyData = data;
+                this.selectedCompany = data[0];
+            }
+
         });
     }
 

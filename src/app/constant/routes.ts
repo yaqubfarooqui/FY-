@@ -19,3 +19,9 @@ export const PurchaseInvoice = {
 export const Product = {
     get: HOST + '/Product/registerProduct'
 }
+export const State = {
+    get:HOST + '/Master/State'
+}
+export const City = {
+    get:HOST + '/Master/City'
+}

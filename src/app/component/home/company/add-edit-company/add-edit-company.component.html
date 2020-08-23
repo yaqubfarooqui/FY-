@@ -138,7 +138,7 @@
     <!-- <ion-button type="submit" color="toolbar" (click)="onSubmit()">Save</ion-button> -->
     <div class="footerWrap ion-margin">
       <ion-button type="submit" color="fybutton" shape="round" class="ion-text-capitalize"
-      [disabled]="companyForm.invalid" (click)="onSubmit()" size="small">Save
+      [disabled]="companyForm.invalid" (click)="onSubmit()" size="small">{{actionType !== 'EDIT' ? 'Save' : 'Update'}}
     </ion-button>
     </div>
    

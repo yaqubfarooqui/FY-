@@ -18,11 +18,26 @@
 </ion-header>
 <ion-content> 
   <ion-list *ngIf="!showSelected">
-      <ion-item *ngFor="let company of companyData;let i=index">
-        <ion-label (click)="showSelectedCompany(i);">
-          <h3>{{company.CompanyName}}</h3>
-          <h6>{{company.CompanyLocation}}</h6>
-        </ion-label>        
+      <ion-item *ngFor="let company of companyData;let i=index" lines="none">
+        <!-- (click)="showSelectedCompany(i);" -->
+        <div class="listWrap">
+          <ion-grid>
+            <ion-row class="ion-align-items-center">
+            <ion-col size="6">
+              <h3 class="lblTitle">{{company.name}}</h3>
+              <p class="lblValue">{{company.address}}</p>
+            </ion-col>
+            <ion-col size="4">
+              <h3 class="lblTitle">{{company.firstContactName}}</h3>
+              <p class="lblValue">{{company.firstContactMobile}}</p>
+            </ion-col>
+            <ion-col size="2" >
+              <ion-icon color="primary" name="create-outline" (click)="navigate('/home/company/edit')"></ion-icon>
+              <ion-icon color="danger" name="trash-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+          </ion-grid>
+        </div>        
       </ion-item>
     </ion-list>
 

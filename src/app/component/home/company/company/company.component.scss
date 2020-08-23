@@ -1,11 +1,24 @@
-.mlabel{
-   .lblTitle{
-       font-size:12px;
-       color:#58585b;
-       margin-right: 15px;
-   } 
-   .lblValue{
-       font-size: 12px;
-       color:#1b2896;
-   }
+ion-content{
+    background-color: #f1f1f1;
+}
+
+ion-item{
+  margin:0;
+  padding:0;
+  border:5px solid #f1f1f1;
+}
+.listWrap{
+    width: 100%;
+    margin:0;
+    .lblTitle{
+        font-size:14px;
+        color:#1b2896;
+        margin:0 15px 5px 0;
+
+    } 
+    .lblValue{
+        font-size: 12px;
+        color:#58585b;
+        margin:0;
+    }
 }
