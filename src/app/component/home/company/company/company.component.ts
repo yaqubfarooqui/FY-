@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyProvider } from '../companyProvider';
 import { CompanyModel } from 'src/app/Model/CompanyModel';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-company',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CompanyComponent implements OnInit {
 
-    constructor(private cProvider: CompanyProvider, private router: Router) {
+    constructor(private cProvider: CompanyProvider, private router: Router, private location:Location) {
     }
 
     companyData = [];
@@ -57,8 +58,21 @@ export class CompanyComponent implements OnInit {
         this.router.navigate([navRoute]);
     }
 
+    onBackButton() {
+        this.location.back();
+    }
     ngOnInit() {
         this.loadCompany();
+        // this.cProvider.loadState().subscribe(resp => {
+        //     if(resp){
+        //         console.log(resp,'load state')
+        //     }
+        // });
+        // this.cProvider.loadCity().subscribe(resp => {
+        //     if(resp){
+        //         console.log('load City', resp)
+        //     }
+        // })
     }
 
 }

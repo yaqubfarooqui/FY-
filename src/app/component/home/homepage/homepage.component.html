@@ -1,41 +1,101 @@
-<ion-grid>
-  <ion-row class="ion-no-padding">
-    <ion-col class="ion-no-margin">
-      <ion-card class="ion-no-margin">
-        <ion-card-header class="ion-text-center">
-          <ion-icon size="large" color="toolbar" name="speedometer"></ion-icon>
-          <ion-card-subtitle>            
-            Company
-          </ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col class="ion-no-margin">
-      <ion-card class="ion-no-margin">
-        <ion-card-header class="ion-text-center"> 
-          <ion-icon size="large" color="toolbar" name="person"></ion-icon>
-          <ion-card-subtitle>Sales Person</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-no-padding">
-    <ion-col class="ion-no-margin">
-      <ion-card class="ion-no-margin">
-        <ion-card-header class="ion-text-center">
-          <ion-icon size="large" color="toolbar" name="clipboard"></ion-icon>
-          <ion-card-subtitle>Invoice</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-    <ion-col class="ion-no-margin">
-      <ion-card class="ion-no-margin">
-        <ion-card-header class="ion-text-center">
-          <ion-icon size="large" color="toolbar" name="information-circle-outline"></ion-icon>
-          <ion-card-subtitle>Info</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </ion-col>
-  </ion-row>
+<ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>      
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>User1</ion-card-subtitle>
+        <ion-card-title>Sales manager</ion-card-title>
+      </ion-card-header>
+      
+    </ion-card> -->
+    <ion-list>
+      <ion-item (click)="navigate('/home')">
+        <ion-icon name="add" slot="start"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/company')">
+        <ion-icon name="speedometer" slot="start"></ion-icon>
+        <ion-label>Company</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/salesPerson')">
+        <ion-icon name="person" slot="start"></ion-icon>
+        <ion-label>Sales Person</ion-label>
+      </ion-item>
+      
+      <ion-item (click)="navigate('/home/product')">
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Product</ion-label>
+      </ion-item>
+      <ion-item (click)="navigate('/home/purchaseInvoice')">
+        <ion-icon name="clipboard" slot="start"></ion-icon>
+        <ion-label>Purchase Invoice</ion-label>
+      </ion-item>       
+      <ion-item (click)="logout()">
+        <ion-icon name="archive" slot="start"></ion-icon>
+        <ion-label>Signout</ion-label>
+      </ion-item>      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="fyblue">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-toolbar-content class="ion-no-padding ion-padding-end ion-justify-content-between ion-align-items-center"> 
+        <img src="../../../assets/img-logo-fy5.png" width="40px" alt="FY5">
+        <img src="../../../assets/ford-logo.png" slot="end" height="15px" width="40px" alt="FY5">
+      </ion-toolbar-content>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-no-padding">
+      <ion-col class="ion-no-margin">
+        <ion-card class="ion-no-margin">
+          <ion-card-header class="ion-text-center">
+            <ion-icon size="large" color="toolbar" name="speedometer"></ion-icon>
+            <ion-card-subtitle>            
+              Company
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-margin">
+        <ion-card class="ion-no-margin">
+          <ion-card-header class="ion-text-center"> 
+            <ion-icon size="large" color="toolbar" name="person"></ion-icon>
+            <ion-card-subtitle>Sales Person</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-no-padding">
+      <ion-col class="ion-no-margin">
+        <ion-card class="ion-no-margin">
+          <ion-card-header class="ion-text-center">
+            <ion-icon size="large" color="toolbar" name="clipboard"></ion-icon>
+            <ion-card-subtitle>Invoice</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-margin">
+        <ion-card class="ion-no-margin">
+          <ion-card-header class="ion-text-center">
+            <ion-icon size="large" color="toolbar" name="information-circle-outline"></ion-icon>
+            <ion-card-subtitle>Info</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  
+  </ion-grid>
+</ion-content>
 
-</ion-grid>
+</div>

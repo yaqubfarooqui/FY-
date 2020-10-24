@@ -34,6 +34,6 @@ export class ProductProvider {
     }
 
     public getcModel(): ProductModel {
-        return this.cModel;
+        return this.cModel; 
     }
 }

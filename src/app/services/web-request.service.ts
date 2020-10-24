@@ -25,7 +25,7 @@ export class WebRequestService {
   }
 
   public patchData(uri :string, data: any): Observable<HttpRes<any>> {
-    return this.http.patch<HttpRes<any>>(this.getUri(uri),data);
+    return this.http.put<HttpRes<any>>(this.getUri(uri),data);
   }
 
   public deleteData(uri :string, data: any): Observable<HttpRes<any>> {

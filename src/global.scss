@@ -50,6 +50,15 @@
     --ion-color-shade: var(--ion-color-toolbar-shade, #37479b);
     --ion-color-tint: var(--ion-color-toolbar-tint, #5262b8);
   }
+
+  .ion-color-mainbg {
+    --ion-color-base: var(--ion-color-mainbg,#f7f7f9);
+    --ion-color-base-rgb: var(--ion-color-mainbg-rgb,247,247,249);
+    --ion-color-contrast: var(--ion-color-mainbg-contrast,#000000);
+    --ion-color-contrast-rgb: var(--ion-color-mainbg-contrast-rgb, 0,0,0);
+    --ion-color-shade: var(--ion-color-mainbg-shade, #d9d9db);
+    --ion-color-tint: var(--ion-color-mainbg-tint, #f8f8fa);
+  }
   .ion-color-ligherblue {
     --ion-color-base: var(--ion-color-step-850,--ion-color-step-850);
     --ion-color-base-rgb: var(--ion-color-ligherblue-rgb,--ion-color-step-850);
@@ -90,10 +99,14 @@ ion-fab-button.fab-button-mini {
 }
 }
 
-ion-toolbar{
-  --height:30px!important;
-  vertical-align: middle;
-}
+// ion-toolbar{
+//   --height:30px!important;
+//   vertical-align: middle;
+//   .toolbar-container{
+//     padding:0;
+//   }
+// }
+
 .btnFy5{
   // border-radius: 40px;
 padding: 5px 45px;}
@@ -103,5 +116,68 @@ padding: 5px 45px;}
 ion-alert {
   .alert-title, .alert-radio-label{
     font-size: 12px;
+  }
+}
+
+// new Toolbar CSS
+.btnWrap {
+  background: #222b94;
+  width: 56px;
+  height: 56px;
+  border-radius: 0 0 56px 0;
+  padding-top: 5px;
+  margin:0;
+ion-icon{
+  color:#fff;
+  margin-top:-15px !important;
+}
+}
+.toolbar-style{    
+  max-height: 506px;
+  padding: 0;
+  margin: 0; 
+  box-shadow:1px 2px 2px 0px rgb(188 188 198 / 40%);
+  ion-title{
+color:#182384;
+font-size:18px;
+text-align: center;
+  }
+}
+
+// Form Footer Scss
+form {
+  ion-label,ion-select-option{
+      font-size: 12px;
+  }
+  
+  ion-input,ion-select, ion-textarea{
+      font-size: 12px;
+      border-bottom:1px solid #3f51b0;
+  }
+  .invalid-feedback ion-text{
+      font-size: 12px;
+  }
+ 
+}
+.footerWrap{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// List View 
+.listWrap{
+  width: 100%;
+  margin:0;
+  .lblTitle{
+      font-size:14px;
+      color:#1b2896;
+      margin:0 15px 5px 0;
+
+  } 
+  .lblValue{
+      font-size: 12px;
+      color:#58585b;
+      margin:0;
   }
 }

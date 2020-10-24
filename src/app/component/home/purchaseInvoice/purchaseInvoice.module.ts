@@ -1,7 +1,7 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PurchaseInvoiceRoutingModule } from './PurchaseInvoice.routing.module';
 
@@ -14,6 +14,7 @@ import {AddEditPurchaseInvoiceComponent } from './add-edit-PurchaseInvoice/add-e
     IonicModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     PurchaseInvoiceRoutingModule
   ],
   declarations: [PurchaseInvoiceComponent, PurchaseInvoicePlaceholderComponent, AddEditPurchaseInvoiceComponent]

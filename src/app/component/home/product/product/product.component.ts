@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/Model/ProductModel';
 import { ProductProvider } from '../ProductProvider';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-Product',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private sProvider: ProductProvider, private router: Router) { }
+  constructor(private sProvider: ProductProvider, private router: Router, private location:Location) { }
 
   productData = [];
   selectedProduct: ProductModel;
@@ -49,7 +50,9 @@ export class ProductComponent implements OnInit {
       }
       this.router.navigate([navRoute]);
   }
-
+  onBackButton() {
+    this.location.back();
+}
   ngOnInit() {
       this.loadProduct();
   }

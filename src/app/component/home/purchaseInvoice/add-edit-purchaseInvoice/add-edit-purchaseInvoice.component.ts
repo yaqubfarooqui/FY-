@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
 import {MasterService} from '../../../../services/masterData.service';
 import { CompanyModel } from 'src/app/Model/CompanyModel';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-add-edit-PurchaseInvoice',
@@ -17,9 +18,27 @@ export class AddEditPurchaseInvoiceComponent implements OnInit {
     PurchaseInvoiceName = 'Add PurchaseInvoice';
     companies: CompanyModel[]=[];
     products : Product[]=[];
-
+    pInvoiceForm: FormGroup;
+    productForm: FormGroup;
     constructor(private location: Location, private salesProve: PurchaseInvoiceProvider,
-                private router: Router, private toastController: ToastController,private MasterService :MasterService) {
+                private router: Router, private toastController: ToastController,private MasterService :MasterService,
+                private FB: FormBuilder) {
+                    this.pInvoiceForm = this.FB.group({
+                        PurchaseInvoiceNumber: new FormControl('', [Validators.required]),
+                        PurchaseInvoiceDate: new FormControl ('', [Validators.required]),
+                        Seller: new FormControl (''),
+                        Buyer: new FormControl ('', [Validators.required]),
+                        TotalAmount: new FormControl ('',[Validators.required]),
+                        Discount: new FormControl ('',[Validators.required]),
+                        NetAmount: new FormControl ('',[Validators.required]),
+                        ModeOfPayment: new FormControl ('',[Validators.required])
+                    });
+                    this.productForm = this.FB.group({
+                            Product: new FormControl('', [Validators.required]),
+                            Quantity: new FormControl('', [Validators.required]),
+                            Amount: new FormControl('', [Validators.required]), 
+                            GST: new FormControl('', [Validators.required])
+                    })
     }
 
     sModel: PurchaseInvoiceModel = new PurchaseInvoiceModel();
@@ -64,36 +83,36 @@ export class AddEditPurchaseInvoiceComponent implements OnInit {
         //             }
     
         //         });
-        // if (this.actionType === 'Add') {
-        //     this.salesProve.addPurchaseInvoiceForUser(this.sModel).subscribe(data => {
-        //         if (data.status !== false) {
-        //             this.presentToast('PurchaseInvoice added', 'primary');
-        //             this.router.navigate(['/home/PurchaseInvoice']);
-        //         } else {
-        //             console.error(data.Message);
-        //             this.presentToast('Error:' + data.Message, 'danger');
-        //         }
+        if (this.actionType === 'Add') {
+            this.salesProve.addPurchaseInvoiceForUser(this.pInvoiceForm.value).subscribe(data => {
+                if (data.status !== false) {
+                    this.presentToast('PurchaseInvoice added', 'primary');
+                    this.router.navigate(['/home/PurchaseInvoice']);
+                } else {
+                    console.error(data.Message);
+                    this.presentToast('Error:' + data.Message, 'danger');
+                }
 
-        //     });
-        // } else {
-        //     this.salesProve.updatePurchaseInvoiceForUser(this.sModel).subscribe(data => {
-        //         if (data.status !== false) {
-        //             this.presentToast('PurchaseInvoice updated', 'primary');
-        //             this.router.navigate(['/home/PurchaseInvoice']);
-        //         } else {
-        //             console.error(data.Message);
-        //             this.presentToast('Error:' + data.Message, 'danger');
-        //         }
+            });
+        } else {
+            this.salesProve.updatePurchaseInvoiceForUser(this.pInvoiceForm.value).subscribe(data => {
+                if (data.status !== false) {
+                    this.presentToast('PurchaseInvoice updated', 'primary');
+                    this.router.navigate(['/home/PurchaseInvoice']);
+                } else {
+                    console.error(data.Message);
+                    this.presentToast('Error:' + data.Message, 'danger');
+                }
 
-        //     });
-        // }
+            });
+         }
 
     }
 
     ngOnInit() {
         this.companies = this.MasterService.getCompany();
         console.log("this.companies",this.companies);
-        this.actionType = this.location.path() === '/home/PurchaseInvoice/add' ? 'Add' : 'Edit';
+        this.actionType = this.location.path() === '/home/purchaseInvoice/add' ? 'Add' : 'Edit';
         if (this.actionType === 'Edit') {
             this.sModel = this.salesProve.getcModel();
           //  this.PurchaseInvoiceName = this.sModel.Name;
@@ -103,10 +122,11 @@ export class AddEditPurchaseInvoiceComponent implements OnInit {
         this.showInvoice = false;
     }
     productOperation(){
-        console.log("this.product ",this.product );
-        let product =JSON.parse(JSON.stringify(this.product));
+       
+        let product =  this.productForm.value;
         this.product = new Product();
         this.products.push(product);
+        console.log("this.product ",this.products );
         this.showInvoice = true;
     }
 }

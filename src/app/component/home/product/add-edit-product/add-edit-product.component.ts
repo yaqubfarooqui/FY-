@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 import {ProductProvider} from '../ProductProvider';
 import {Router} from '@angular/router';
 import {ToastController} from '@ionic/angular';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-add-edit-product',
@@ -13,9 +14,14 @@ import {ToastController} from '@ionic/angular';
 export class AddEditProductComponent implements OnInit {
     actionType = 'ADD';
     productName = 'Add Product';
-
+    productForm: FormGroup;
     constructor(private location: Location, private productProve: ProductProvider,
-                private router: Router, private toastController: ToastController) {
+                private router: Router, private toastController: ToastController, private FB:FormBuilder) {
+                    this.productForm = this.FB.group({
+                        Name: new FormControl('', [Validators.required]),
+                        HSNCode: new FormControl ('', [Validators.required]),
+                        GST: new FormControl ('', [Validators.required])
+                    })
     }
 
     sModel: ProductModel = new ProductModel();
@@ -35,7 +41,7 @@ export class AddEditProductComponent implements OnInit {
 
     onSubmit() {
         if (this.actionType === 'Add') {
-            this.productProve.addProductForUser(this.sModel).subscribe(data => {
+            this.productProve.addProductForUser(this.productForm.value).subscribe(data => {
                 if (data.status !== false) {
                     this.presentToast('Product added', 'primary');
                     this.router.navigate(['/home/product']);
@@ -46,7 +52,7 @@ export class AddEditProductComponent implements OnInit {
 
             });
         } else {
-            this.productProve.updateProductForUser(this.sModel).subscribe(data => {
+            this.productProve.updateProductForUser(this.productForm.value).subscribe(data => {
                 if (data.status !== false) {
                     this.presentToast('Product updated', 'primary');
                     this.router.navigate(['/home/product']);
@@ -62,9 +68,11 @@ export class AddEditProductComponent implements OnInit {
 
     ngOnInit() {
         this.actionType = this.location.path() === '/home/product/add' ? 'Add' : 'Edit';
+        debugger
         if (this.actionType === 'Edit') {
-            this.sModel = this.productProve.getcModel();
-            this.productName = this.sModel.Name;
+            const pValue = this.productProve.getcModel();
+            this.productForm.patchValue(pValue)
+            this.productName = this.productForm.value.name;
         }
     }
 

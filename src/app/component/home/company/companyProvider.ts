@@ -2,9 +2,10 @@ import {LoginModel} from 'src/app/Model/loginModel';
 import {Observable} from 'rxjs';
 import {HttpRes} from 'src/app/Model/UserModel';
 import {WebRequestService} from 'src/app/services/web-request.service';
-import {LOGIN, Company} from 'src/app/constant/routes';
+import {LOGIN, Company, State, City} from 'src/app/constant/routes';
 import {Injectable} from '@angular/core';
 import {CompanyModel} from '../../../Model/CompanyModel';
+import { StateModal } from 'src/app/Model/StateModal';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +26,7 @@ export class CompanyProvider {
     }
 
     public updateCompanyForUser(cData: CompanyModel): Observable<HttpRes<any>> {
-        const UpdateUrl =  Company.get + '/' + cData._id;
+        const UpdateUrl =  Company.get  //+ '/' + cData._id;
         return this.webservice.patchData(UpdateUrl, cData);
     }
 
@@ -35,5 +36,11 @@ export class CompanyProvider {
 
     public getcModel(): CompanyModel {
         return this.cModel;
+    }
+    public loadState() {
+        return this.webservice.getData(State.get);
+    }
+    public loadCity() {
+        return this.webservice.getData(City.get);
     }
 }

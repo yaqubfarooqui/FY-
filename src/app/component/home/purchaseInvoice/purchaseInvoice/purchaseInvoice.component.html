@@ -1,4 +1,4 @@
-<ion-toolbar>
+<!-- <ion-toolbar>
   <ion-buttons slot="start">
     <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
   </ion-buttons>
@@ -9,7 +9,25 @@
   <ion-buttons slot="end" *ngIf="!showSelected" (click)="navigate('/home/purchaseInvoice/add')">
     <ion-icon name="add" slot="end"></ion-icon>
   </ion-buttons>
-</ion-toolbar>
+</ion-toolbar> -->
+<ion-header>
+  <ion-toolbar color="toolbar">
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="showSelected"><small>Purchase Invoice</small></ion-title>
+    <ion-title *ngIf="!showSelected"><small>Purchase Invoice</small></ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/home/purchaseInvoice/edit')">
+      <ion-icon name="create-outline" slot="end" ></ion-icon>
+    </ion-buttons> 
+    <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/home/purchaseInvoice/add')">
+      <ion-icon name="add" slot="end"></ion-icon>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
 <ion-content> 
   <ion-list *ngIf="!showSelected">
       <ion-item *ngFor="let PurchaseInvoice of PurchaseInvoiceData;let i=index">

@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private menu: MenuController,private route:Router,private auth:AuthProvider) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  
+  }
 
   openFirst() {
     this.menu.enable(true, 'first');

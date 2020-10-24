@@ -15,6 +15,10 @@ export class AddEditCompanyComponent implements OnInit {
     actionType = 'ADD';
     companyName = 'Add company';
     companyForm: FormGroup
+    stateData: import("../../../../Model/UserModel").HttpRes<any>;
+    cityData: any;
+    natureofBusilist: { name: string; id: number; }[];
+    cityRawData:any;
     constructor(
         private location: Location,
         private companyProve: CompanyProvider,
@@ -30,8 +34,8 @@ export class AddEditCompanyComponent implements OnInit {
             secondContactEmail: new FormControl('', [Validators.email]),
             secondContactMobile: new FormControl('', [Validators.maxLength(10)]),
             address: new FormControl('',),
-            stateId: new FormControl(1),
-            cityId: new FormControl(1,),
+            stateId: new FormControl(0),
+            cityId: new FormControl(0),
             landmark: new FormControl(''),
             pinCode: new FormControl(''),
             natureOfBusiness: new FormControl(1, [Validators.required]),
@@ -81,12 +85,28 @@ export class AddEditCompanyComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.natureofBusilist = [{name:'B2B', id:1}, {name:'B2C', id:2}]
         this.actionType = this.location.path() === '/home/company/add' ? 'ADD' : 'EDIT';
         if (this.actionType === 'EDIT') {
             const cVal = this.companyProve.getcModel();
             this.companyForm.patchValue(cVal);
             this.companyName = this.companyForm.value.name;
         }
+        this.companyProve.loadState().subscribe( resp=> {
+            if(resp){
+                this.stateData = resp;
+            }
+        })
+        this.companyProve.loadCity().subscribe( (resp:any) => {
+            if(resp){
+                this.cityRawData = resp
+            }
+            });
     }
-
+    fnBindCityDD(stateId){
+         
+                this.cityData = this.cityRawData.filter( respItem=> respItem.stateId === stateId)
+          
+    }
 }

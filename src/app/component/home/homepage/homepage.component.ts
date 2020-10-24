@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { AuthProvider } from '../../User/authprovider';
 
 @Component({
   selector: 'app-homepage',
@@ -7,8 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private menu: MenuController,private route:Router,private auth:AuthProvider) { }
 
   ngOnInit() {}
 
+  // Function for navigate sidebar menu and closed
+
+  
+  navigate(navRoute:string):void{
+    this.menu.close();
+    this.route.navigate([navRoute])
+  }
 }

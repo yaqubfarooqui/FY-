@@ -1,18 +1,45 @@
-<ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
-  </ion-buttons>
-  <ion-title>{{name}}</ion-title>
-  <ion-buttons slot="end" *ngIf="showSelected" icon-only >
-    <ion-icon name="create-outline" slot="end" (click)="navigate('/home/product/edit')"></ion-icon>
-  </ion-buttons>
-  <ion-buttons slot="end" *ngIf="!showSelected" (click)="navigate('/home/product/add')">
-    <ion-icon name="add" slot="end"></ion-icon>
-  </ion-buttons>
-</ion-toolbar>
+
+<ion-header>
+  <ion-toolbar color="toolbar">
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="showSelected"><small>{{name}}</small></ion-title>
+    <ion-title *ngIf="!showSelected"><small>Products</small></ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/home/product/edit')">
+      <ion-icon name="create-outline" slot="end" ></ion-icon>
+    </ion-buttons> 
+    <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/home/product/add')">
+      <ion-icon name="add" slot="end"></ion-icon>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
 <ion-content> 
   <ion-list *ngIf="!showSelected">
       <ion-item *ngFor="let product of productData;let i=index">
+        <div class="listWrap">
+          <ion-grid>
+            <ion-row class="ion-align-items-center">
+            <ion-col size="6">
+              <h3 class="lblTitle">{{product.Name}}</h3>
+              <p class="lblValue">{{product.HSNCode}}</p>
+            </ion-col>
+            <ion-col size="4">
+              <h3 class="lblTitle">{{product.GST}}</h3> 
+            </ion-col>
+            <ion-col size="2" >
+              <ion-icon color="primary" name="create-outline" (click)="navigate('/home/product/edit')"></ion-icon>
+              <ion-icon color="danger" name="trash-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+          </ion-grid>
+        </div>   
+
+
         <ion-label (click)="showSelectedProduct(i);">
           <h3>{{product.Name}}</h3>          
         </ion-label>        

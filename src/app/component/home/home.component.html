@@ -1,4 +1,4 @@
-<ion-menu side="start" content-id="main-content">
+<!-- <ion-menu side="start" content-id="main-content">
   <ion-header>
     <ion-toolbar translucent>
       <ion-title>Menu</ion-title>      
@@ -26,6 +26,11 @@
         <ion-icon name="paper-plane" slot="start"></ion-icon>
         <ion-label>Sales Person</ion-label>
       </ion-item>
+      
+      <ion-item (click)="navigate('/home/product')">
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Product</ion-label>
+      </ion-item>
       <ion-item (click)="navigate('/home/purchaseInvoice')">
         <ion-icon name="paper-plane" slot="start"></ion-icon>
         <ion-label>Purchase Invoice</ion-label>
@@ -40,8 +45,8 @@
       </ion-item>      
     </ion-list>
   </ion-content>
-</ion-menu>
-<div class="ion-page" id="main-content">
+</ion-menu> -->
+<!-- <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar color="fyblue">
       <ion-buttons slot="start">
@@ -52,9 +57,9 @@
         <img src="../../../assets/ford-logo.png" slot="end" height="15px" width="40px" alt="FY5">
       </ion-toolbar-content>
     </ion-toolbar>
-  </ion-header>
+  </ion-header>-->
   <ion-content >
     <router-outlet></router-outlet>
-    </ion-content>
-</div>
+     </ion-content>
+<!--</div> -->
 

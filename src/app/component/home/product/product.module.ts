@@ -1,7 +1,7 @@
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductRoutingModule } from './product.routing.module';
 
@@ -14,6 +14,7 @@ import {AddEditProductComponent } from './add-edit-product/add-edit-product.comp
     IonicModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ProductRoutingModule
   ],
   declarations: [ProductComponent, ProductPlaceholderComponent, AddEditProductComponent]

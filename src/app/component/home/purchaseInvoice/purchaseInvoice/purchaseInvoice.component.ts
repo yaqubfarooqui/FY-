@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PurchaseInvoiceModel } from 'src/app/Model/PurchaseInvoiceModel';
 import { PurchaseInvoiceProvider } from '../purchaseInvoiceProvider';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-PurchaseInvoice',
@@ -10,13 +11,15 @@ import { Router } from '@angular/router';
 })
 export class PurchaseInvoiceComponent implements OnInit {
 
-  constructor(private sProvider: PurchaseInvoiceProvider, private router: Router) { }
+  constructor(private sProvider: PurchaseInvoiceProvider, private router: Router, private location: Location) { }
 
   PurchaseInvoiceData = [];
   selectedPurchaseInvoice: PurchaseInvoiceModel;
   showSelected = false;
   
-
+  onBackButton() {
+    this.location.back();
+}
   private loadPurchaseInvoice() {
       this.sProvider.getPurchaseInvoiceForUser().subscribe((data) => {
           this.PurchaseInvoiceData = data.Data;

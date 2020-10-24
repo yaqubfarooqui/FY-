@@ -21,11 +21,12 @@ export class SalesPersonProvider {
     }
 
     public addSalesPersonForUser(sData: SalesPersonModel): Observable<HttpRes<any>> {
+        debugger
         return this.webservice.postData(SalesPerson.get, sData);
     }
 
     public updateSalesPersonForUser(sData: SalesPersonModel): Observable<HttpRes<any>> {
-        const UpdateUrl =  SalesPerson.get + '/' + sData._id;
+        const UpdateUrl =  SalesPerson.get;
         return this.webservice.patchData(UpdateUrl, sData);
     }
 

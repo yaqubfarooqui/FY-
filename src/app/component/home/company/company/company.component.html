@@ -1,28 +1,37 @@
-
 <ion-header>
-  <ion-toolbar color="toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="add"></ion-back-button>
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start" class="btnWrap">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
     </ion-buttons>
-    <ion-buttons slot="start">
-    <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
-  </ion-buttons>
-  <ion-title><small>{{companyName}}</small></ion-title>
-  <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end">
-    <ion-icon name="create-outline" slot="end" (click)="navigate('/home/company/edit')"></ion-icon>
-  </ion-buttons> 
-  <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end">
-    <ion-icon name="add" slot="end" (click)="navigate('/home/company/add')"></ion-icon>
-  </ion-buttons> 
- </ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button text="" icon="add"></ion-back-button>
+    </ion-buttons> -->
+    <ion-buttons slot="start" class="btnWrap" *ngIf="showSelected">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackPressed()"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{companyName}}</ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end">
+      <ion-icon name="create-outline" slot="end" (click)="navigate('/home/company/edit')"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end">
+      <ion-icon name="add" slot="end" (click)="navigate('/home/company/add')"></ion-icon>
+    </ion-buttons>
+    
+   </ion-toolbar> 
+
+   <ion-fab vertical="top" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-header>
-<ion-content> 
+<ion-content>
   <ion-list *ngIf="!showSelected">
-      <ion-item *ngFor="let company of companyData;let i=index" lines="none">
-        <!-- (click)="showSelectedCompany(i);" -->
-        <div class="listWrap">
-          <ion-grid>
-            <ion-row class="ion-align-items-center">
+    <ion-item *ngFor="let company of companyData;let i=index" lines="none">
+      <!-- (click)="showSelectedCompany(i);" -->
+      <div class="listWrap">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
             <ion-col size="6">
               <h3 class="lblTitle">{{company.name}}</h3>
               <p class="lblValue">{{company.address}}</p>
@@ -31,22 +40,22 @@
               <h3 class="lblTitle">{{company.firstContactName}}</h3>
               <p class="lblValue">{{company.firstContactMobile}}</p>
             </ion-col>
-            <ion-col size="2" >
+            <ion-col size="2">
               <ion-icon color="primary" name="create-outline" (click)="navigate('/home/company/edit')"></ion-icon>
               <ion-icon color="danger" name="trash-outline"></ion-icon>
             </ion-col>
           </ion-row>
-          </ion-grid>
-        </div>        
-      </ion-item>
-    </ion-list>
+        </ion-grid>
+      </div>
+    </ion-item>
+  </ion-list>
 
-    <ion-list *ngIf="showSelected">
-      <ion-item *ngFor="let ky of companyLabels">
-        <ion-label class="mlabel">
-          <span class="lblTitle">{{companyKeyLabels[ky]}}</span>
-          <span class="lblValue">{{selectedCompany[ky]}}</span>
-        </ion-label>        
-      </ion-item>
-    </ion-list>
+  <ion-list *ngIf="showSelected">
+    <ion-item *ngFor="let ky of companyLabels">
+      <ion-label class="mlabel">
+        <span class="lblTitle">{{companyKeyLabels[ky]}}</span>
+        <span class="lblValue">{{selectedCompany[ky]}}</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

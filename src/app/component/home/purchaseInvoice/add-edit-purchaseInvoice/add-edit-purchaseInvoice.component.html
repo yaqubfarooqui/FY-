@@ -1,76 +1,115 @@
-<ion-toolbar>
+<!-- <ion-toolbar>
   <ion-icon name="arrow-back-outline" (click)="onBackButton()"></ion-icon>
   <ion-title>{{actionType}} Purchase Invioce</ion-title>
-</ion-toolbar>
-<form>
+</ion-toolbar> -->
+
+<ion-header>
+  <ion-toolbar color="toolbar">
+    <ion-buttons slot="start">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title *ngIf="showSelected"><small>{{selectedSalesPerson.Name}}</small></ion-title> -->
+    <ion-title><small>{{actionType}} Purchase Invioce</small></ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/home/purchaseInvoice/edit')">
+      <ion-icon name="create-outline" slot="end" ></ion-icon>
+    </ion-buttons> 
+    <!-- <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/add')">
+      <ion-icon name="add" slot="end"></ion-icon>
+    </ion-buttons>  -->
+  </ion-toolbar>
+</ion-header> 
+<ion-content>
+<form [formGroup]="pInvoiceForm">
   <div *ngIf="showInvoice">
-    <ion-item>
-      <ion-label position="floating">Purchase Invoice Number</ion-label>
-      <ion-input type="text" required [(ngModel)]="sModel.PurchaseInvoiceNumber" name="sModel.PurchaseInvoiceNumber">
-      </ion-input>
+    <ion-item lines="none">
+      <ion-label position="floating">Purchase Invoice Number </ion-label>
+      <ion-input type="text" formControlName="PurchaseInvoiceNumber" name="PurchaseInvoiceNumber"></ion-input>
+      <div
+        *ngIf="pInvoiceForm.controls['PurchaseInvoiceNumber'].invalid && pInvoiceForm.controls['PurchaseInvoiceNumber'].touched"
+        class="invalid-feedback">
+        <ion-text color="danger" *ngIf="pInvoiceForm.controls['PurchaseInvoiceNumber'].errors.required">Purchase Invoice
+          Number is
+        </ion-text>
+      </div>
     </ion-item>
-    <ion-item>
+
+    <ion-item lines="none">
       <ion-label position="floating">Purchase Date </ion-label>
-      <ion-datetime displayFormat="MMM DD YY" required placeholder="Select Date"
-        [(ngModel)]="sModel.PurchaseInvoiceDate" name="sModel.PurchaseInvoiceDate"></ion-datetime>
+      <ion-datetime displayFormat="MMM DD YY" placeholder="Select Date" formControlName="PurchaseInvoiceDate"
+        name="PurchaseInvoiceDate"></ion-datetime>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Seller </ion-label>
-      <ion-select placeholder="Select Seller" [(ngModel)]="sModel.Seller" name="sModel.Seller">
+      <ion-select placeholder="Select Seller" formControlName="Seller" name="Seller">
         <ion-select-option *ngFor="let c of companies" [value]="c.CompanyName">{{c.CompanyName}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Buyer </ion-label>
-      <ion-input type="text" required [(ngModel)]="sModel.Buyer" name="sModel.Buyer"></ion-input>
+      <ion-input type="text" formControlName="Buyer" name="Buyer"></ion-input>
     </ion-item>
-<ion-item>
-  <ion-label position="floating">products </ion-label>
-<ion-label position="floating" *ngFor="let p of products">
-  {{p.Product }} <!-- +"--" + p.Quantity +"--" + p.Amount + "--" p.GST + "--" -->
-</ion-label>
-  
-</ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">products </ion-label>
+      <table> <tr *ngFor="let p of products">
+       <td>{{p.Product }}</td> <td>{{p.Quantity }}</td><td>{{p.Amount }}</td><td>{{p.GST }}</td></tr>
+        <!-- +"--" + p.Quantity +"--" + p.Amount + "--" p.GST + "--" -->
+      </table>
 
-
-    <ion-item>
+    </ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Total Amount</ion-label>
-      <ion-input type="text" required [(ngModel)]="sModel.TotalAmount" name="sModel.TotalAmount"></ion-input>
+      <ion-input type="text" formControlName="TotalAmount" name="TotalAmount"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Discount</ion-label>
-      <ion-input type="text" required [(ngModel)]="sModel.Discount" name="sModel.Discount"></ion-input>
+      <ion-input type="text" formControlName="Discount" name="Discount"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Net Amount</ion-label>
-      <ion-input type="text" required [(ngModel)]="sModel.NetAmount" name="sModel.NetAmount"></ion-input>
+      <ion-input type="text" formControlName="NetAmount" name="NetAmount"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">ModeOfPayment</ion-label>
-      <ion-input type="text" required [(ngModel)]="sModel.ModeOfPayment" name="sModel.ModeOfPayment"></ion-input>
+    <ion-item lines="none">
+      <ion-label position="floating">Mode Of Payment</ion-label>
+      <ion-input type="text" formControlName="ModeOfPayment" name="ModeOfPayment"></ion-input>
     </ion-item>
 
-    <ion-button type="ion-button" color="primary" (click)="addProduct()">Add Product</ion-button>
-    <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button>
-  </div>
-
-  <div *ngIf="!showInvoice">
-    <ion-item>
-      <ion-label position="floating">Product</ion-label>
-      <ion-input type="text" required [(ngModel)]="product.Product" name="product.Product"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Quantity</ion-label>
-      <ion-input type="text" required [(ngModel)]="product.Quantity" name="product.Quantity"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Amount</ion-label>
-      <ion-input type="text" required [(ngModel)]="product.Amount" name="product.Amount"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">GST</ion-label>
-      <ion-input type="text" required [(ngModel)]="product.GST" name="product.GST"></ion-input>
-    </ion-item>
-    <ion-button type="submit" color="primary" (click)="productOperation()">Add Product</ion-button>
+    <!-- <ion-button type="ion-button" color="primary" (click)="addProduct()">Add Product</ion-button> -->
+    <!-- <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button> -->
+    <div class="footerWrap ion-margin">
+      <ion-button type="ion-button" color="fybutton" shape="round" class="ion-text-capitalize" (click)="addProduct()"
+        size="small">Add Product
+      </ion-button>
+      <ion-button type="submit" color="fybutton" shape="round" class="ion-text-capitalize"
+        [disabled]="pInvoiceForm.invalid" (click)="onSubmit()" size="small">Save
+      </ion-button>
+    </div>
+    
   </div>
 </form>
+<form [formGroup]="productForm">
+  <div *ngIf="!showInvoice">
+    <ion-item lines="none">
+      <ion-label position="floating">Product</ion-label>
+      <ion-input type="text" formControlName="Product" name="Product"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Quantity</ion-label>
+      <ion-input type="text" formControlName="Quantity" name="Quantity"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input type="text" formControlName="Amount" name="Amount"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">GST</ion-label>
+      <ion-input type="text" formControlName="GST" name="GST"></ion-input>
+    </ion-item>
+    <!-- <ion-button type="submit" color="primary" (click)="productOperation()">Add Product</ion-button> -->
+    <div class="footerWrap ion-margin"> 
+      <ion-button type="submit" color="fybutton" shape="round" class="ion-text-capitalize"
+        [disabled]="productForm.invalid" (click)="productOperation()" size="small">Add Product
+      </ion-button>
+    </div>
+  </div>
+</form>
+</ion-content>

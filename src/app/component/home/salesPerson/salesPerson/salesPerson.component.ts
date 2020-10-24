@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SalesPersonModel } from 'src/app/Model/SalesPersonModel';
 import { SalesPersonProvider } from '../salesPersonProvider';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-salesPerson',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SalesPersonComponent implements OnInit {
 
-  constructor(private sProvider: SalesPersonProvider, private router: Router) { }
+  constructor(private sProvider: SalesPersonProvider, private router: Router, private location:Location) { }
 
   salesPersonData = [];
   selectedSalesPerson: SalesPersonModel;
@@ -27,9 +28,9 @@ export class SalesPersonComponent implements OnInit {
   };
 
   private loadSalesPerson() {
-      this.sProvider.getSalesPersonForUser().subscribe((data) => {
-          this.salesPersonData = data.Data;
-          this.selectedSalesPerson = data.Data[0];
+      this.sProvider.getSalesPersonForUser().subscribe((data:any) => {
+          this.salesPersonData = data;
+          this.selectedSalesPerson = data[0];
       });
   }
 
@@ -48,7 +49,9 @@ export class SalesPersonComponent implements OnInit {
       }
       this.router.navigate([navRoute]);
   }
-
+  onBackButton() {
+    this.location.back();
+}
   ngOnInit() {
       this.loadSalesPerson();
   }

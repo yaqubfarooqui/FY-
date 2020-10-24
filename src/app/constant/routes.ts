@@ -10,14 +10,14 @@ export const Company = {
 };
 
 export const SalesPerson = {
-    get: HOST + '/SalesPerson/registerSalesPerson'
+    get: HOST + '/SalesPerson'
 };
 
 export const PurchaseInvoice = {
     get: HOST + '/PurchaseInvoice/registerPurchaseInvoice'
 }
 export const Product = {
-    get: HOST + '/Product/registerProduct'
+    get: HOST + '/products'
 }
 export const State = {
     get:HOST + '/Master/State'
