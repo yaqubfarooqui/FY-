@@ -1,17 +1,18 @@
+
 import {LoginModel} from 'src/app/Model/loginModel';
 import {Observable} from 'rxjs';
 import {HttpRes} from 'src/app/Model/UserModel';
 import {WebRequestService} from 'src/app/services/web-request.service';
 import {LOGIN, Company, State, City} from 'src/app/constant/routes';
 import {Injectable} from '@angular/core';
-import {CompanyModel} from '../../../Model/CompanyModel';
+import {CompanyModel} from '../../Model/CompanyModel';
 import { StateModal } from 'src/app/Model/StateModal';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class CompanyProvider {
+export class buyerSellerProvider {
     cModel: CompanyModel = new CompanyModel();
 
     constructor(private webservice: WebRequestService) {

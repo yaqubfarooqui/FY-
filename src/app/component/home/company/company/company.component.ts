@@ -58,6 +58,15 @@ export class CompanyComponent implements OnInit {
         this.router.navigate([navRoute]);
     }
 
+    fnDelete(id: number){
+        this.cProvider.deleteBuyerSeller(id).subscribe(resp => {
+            if(resp){
+                console.log(resp);
+                this.loadCompany();
+            }
+        });
+        this.loadCompany();
+    }
     onBackButton() {
         this.location.back();
     }

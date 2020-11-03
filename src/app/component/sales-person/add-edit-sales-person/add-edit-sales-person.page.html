@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start" class="btnWrap">
+      <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title *ngIf="showSelected"><small>{{selectedSalesPerson.Name}}</small></ion-title> -->
+    <ion-title>{{actionType}} Sales Person</ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/sales-person/edit')">
+      <ion-icon name="create-outline" slot="end" ></ion-icon>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="sPersonForm">
+    <ion-item lines="none">
+      <ion-label position="floating">Name </ion-label>
+      <ion-input type="text" formControlName="name" name="Name"></ion-input>    
+      <div *ngIf="sPersonForm.controls['name'].invalid &&
+      sPersonForm.controls['name'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="sPersonForm.controls['name'].errors.required"> Name is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Mobile 1 </ion-label>
+      <ion-input type="text" formControlName="mobile1" name="mobile1"></ion-input>
+        <!-- <div
+      *ngIf="sPersonForm.controls['mobile1'].invalid && 
+      sPersonForm.controls['mobile1'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="sPersonForm.controls['mobile1].errors.required">
+        Mobile number is required</ion-text>
+      <ion-text color="danger" *ngIf="sPersonForm.controls['mobile1'].errors.pattern">
+        Mobile number must be 10 characters</ion-text> 
+    </div>   -->
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Mobile 2 </ion-label>
+      <ion-input type="text" formControlName="mobile2" name="mobile2"></ion-input>
+      <!-- <div
+      *ngIf="sPersonForm.controls['mobile2'].invalid && 
+      sPersonForm.controls['mobile2'].touched"
+      class="invalid-feedback">
+       <ion-text color="danger" *ngIf="sPersonForm.controls['mobile2'].errors.pattern">
+        Mobile number must be 10 characters</ion-text> 
+    </div> -->
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" formControlName="email" name="Email"></ion-input> 
+      <div *ngIf="sPersonForm.controls['email'].invalid &&  
+      sPersonForm.controls['email'].touched" class="invalid-feedback">
+      <ion-text color="danger" *ngIf="sPersonForm.controls['email'].errors.required">
+        Email is required</ion-text>
+      <ion-text color="danger" *ngIf="sPersonForm.controls['email'].errors.email">Email
+        must be a valid email address</ion-text>
+  
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Aadhar Number</ion-label>
+      <ion-input type="text" formControlName="aadhar" name="Aadhar"></ion-input>
+      <div *ngIf="sPersonForm.controls['aadhar'].invalid &&  sPersonForm.controls['aadhar'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="sPersonForm.controls['aadhar'].errors.required">Aadhar number is required
+      </ion-text>
+      <ion-text color="danger" *ngIf="sPersonForm.controls['aadhar'].errors.pattern">Aadhar number must be 12 characters
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Salary</ion-label>
+      <ion-input type="text" formControlName="salary" name="Salary"></ion-input>
+      <div *ngIf="sPersonForm.controls['salary'].invalid &&  sPersonForm.controls['salary'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="sPersonForm.controls['salary'].errors.required">Salary is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Photo</ion-label>
+      <ion-input type="text" formControlName="photo" name="Photo"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Pancard</ion-label>
+      <ion-input type="text" formControlName="panCard" name="Pancard"></ion-input>
+      <div *ngIf="sPersonForm.controls['panCard'].invalid &&  sPersonForm.controls['panCard'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="sPersonForm.controls['panCard'].errors.required">Pancard is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> Address</ion-label>
+      <ion-textarea type="text" formControlName="address" name="address"></ion-textarea>
+    </ion-item>
+    <!-- <ion-item lines="none">
+      <ion-label position="floating"> State</ion-label>
+      <ion-input type="text" formControlName="stateId" name="stateId"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> City</ion-label>
+      <ion-input type="text" formControlName="cityId" name="cityId"></ion-input>
+    </ion-item> -->
+    <ion-item lines="none">
+      <ion-label position="floating"> State</ion-label>
+      <!-- <ion-input type="text" formControlName="stateId" name="stateId"></ion-input> -->
+      <ion-select formControlName="stateId" (ionChange)="fnBindCityDD(sPersonForm.controls['stateId'].value)"
+      value="0" interface="popover" name="stateId" >
+      <!-- <ion-select-option value="0">Select /State</ion-select-option> -->
+        <ion-select-option [value]="state.id" *ngFor="let state of stateData">{{state.name}}</ion-select-option> 
+      </ion-select> 
+    </ion-item>
+  
+    <ion-item lines="none">
+      <ion-label position="floating"> City</ion-label>
+      <!-- <ion-input type="text" formControlName="cityId" name="cityId"></ion-input> -->
+      <ion-select formControlName="cityId" name="cityId" value="0" interface="popover" >
+        <ion-select-option value="0">Select City</ion-select-option>
+        <ion-select-option [value]="city.id" *ngFor="let city of cityData">{{city.name}}</ion-select-option> 
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> Landmark</ion-label>
+      <ion-input type="text" formControlName="landmark" name="landmark"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> Pincode</ion-label>
+      <ion-input type="text" formControlName="pinCode" name="pinCode"></ion-input>
+    </ion-item>
+  <ion-item lines="none">
+    <ion-row>
+      <ion-col><ion-button color="primary" (click)="takePicture()">Take Picture</ion-button></ion-col>
+    </ion-row>
+  </ion-item>
+    <div class="footerWrap ion-margin">
+      <ion-button type="submit" color="fybutton" shape="round" class="ion-text-capitalize"
+      [disabled]="sPersonForm.invalid" (click)="onSubmit()" size="small">{{actionType !== 'EDIT' ? 'Save' : 'Update'}}
+    </ion-button>
+    </div>
+    
+  </form>
+</ion-content>

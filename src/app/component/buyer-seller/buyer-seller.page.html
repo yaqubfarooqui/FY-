@@ -1,4 +1,7 @@
 <ion-header>
+  <!-- <ion-toolbar>
+    <ion-title>buyerSeller</ion-title>
+  </ion-toolbar> -->
   <ion-toolbar class="toolbar-style">
     <ion-buttons slot="start" class="btnWrap">
       <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
@@ -10,26 +13,22 @@
       <ion-icon name="chevron-back-outline" slot="end" (click)="onBackPressed()"></ion-icon>
     </ion-buttons>
     <ion-title class="ion-text-center">{{companyName}}</ion-title>
-    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end">
+    <!-- <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end">
       <ion-icon name="create-outline" slot="end" (click)="navigate('/home/company/edit')"></ion-icon>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end">
-      <ion-icon name="add" slot="end" (click)="navigate('/home/company/add')"></ion-icon>
+      <ion-icon name="add" slot="end" (click)="navigate('/buyer-seller/add')"></ion-icon>
     </ion-buttons>
     
    </ion-toolbar> 
 
-   <ion-fab vertical="top" horizontal="start" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-header>
-<ion-content>
-  <ion-list *ngIf="!showSelected">
-    <ion-item *ngFor="let company of companyData;let i=index" lines="none">
+
+<ion-content color="toolbar">
+  <ion-list *ngIf="!showSelected" class="ion-no-padding">
+    <ion-item *ngFor="let company of companyData;let i=index" lines="none" class="listWrap ion-no-padding">
       <!-- (click)="showSelectedCompany(i);" -->
-      <div class="listWrap">
+      <!-- <div class="listWrap"> -->
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="6">
@@ -41,12 +40,12 @@
               <p class="lblValue">{{company.firstContactMobile}}</p>
             </ion-col>
             <ion-col size="2">
-              <ion-icon color="primary" name="create-outline" (click)="navigate('/home/company/edit')"></ion-icon>
+              <ion-icon color="primary" name="create-outline" class="ion-margin-end" (click)="navigate('/buyer-seller/edit')"></ion-icon>
               <ion-icon color="danger" name="trash-outline" (click)="fnDelete(company.id)"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-grid>
-      </div>
+      <!-- </div> -->
     </ion-item>
   </ion-list>
 

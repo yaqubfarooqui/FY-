@@ -28,7 +28,7 @@ export class WebRequestService {
     return this.http.put<HttpRes<any>>(this.getUri(uri),data);
   }
 
-  public deleteData(uri :string, data: any): Observable<HttpRes<any>> {
+  public deleteData(uri :string, data?: any): Observable<HttpRes<any>> {
     return this.http.delete<HttpRes<any>>(this.getUri(uri));
   }
 

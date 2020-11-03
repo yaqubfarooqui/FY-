@@ -4,7 +4,7 @@ import {HttpRes} from 'src/app/Model/UserModel';
 import {WebRequestService} from 'src/app/services/web-request.service';
 import {LOGIN, SalesPerson} from 'src/app/constant/routes';
 import {Injectable} from '@angular/core';
-import {SalesPersonModel} from '../../../Model/SalesPersonModel';
+import {SalesPersonModel} from '../../Model/SalesPersonModel';
 
 @Injectable({
     providedIn: 'root'

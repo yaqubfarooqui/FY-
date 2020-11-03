@@ -76,7 +76,7 @@ export class AddEditSalesPersonComponent implements OnInit {
                     console.error(data.Message);
                     this.presentToast('Error:' + data.Message, 'danger');
                 }
-
+                this.router.navigate(['/home/salesPerson']);
             });
         } else {
             this.salesProve.updateSalesPersonForUser(formatVal).subscribe(data => {

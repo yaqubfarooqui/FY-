@@ -10,11 +10,26 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./component/home/home.module').then(m => m.HomeModule)
-  }/*,
+  }, {
+    path: 'buyer-seller',
+    loadChildren: () => import('./component/buyer-seller/buyer-seller.module').then( m => m.BuyerSellerPageModule)
+  },
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }*/
+  },
+  {
+    path: 'sales-person',
+    loadChildren: () => import('./component/sales-person/sales-person.module').then( m => m.SalesPersonPageModule)
+  }, 
+  {
+    path: 'transaction',
+    loadChildren: () => import('./component/transaction/transaction.module').then( m => m.TransactionPageModule)
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./component/product/product.module').then( m => m.ProductPageModule)
+  } 
 ];
 @NgModule({
   imports: [

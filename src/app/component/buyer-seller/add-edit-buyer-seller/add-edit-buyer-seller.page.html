@@ -1,0 +1,153 @@
+<ion-header>
+    <ion-toolbar class="toolbar-style">
+      <ion-buttons slot="start" class="btnWrap">
+        <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
+      </ion-buttons>
+      <!-- <ion-icon name="arrow-back-outline" (click)="onBackButton()"></ion-icon> -->
+      <ion-title class="ion-text-center">{{actionType}} Buyer Seller</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="companyForm">
+    <ion-item lines="none">
+      <ion-label position="floating">Company Name</ion-label>
+      <!-- <ion-input type="text" required [(ngModel)]="cModel.CompanyName" name="CompanyName"></ion-input> -->
+      <ion-input type="text" formControlName="name" name="name"></ion-input>
+
+      <div *ngIf="companyForm.controls['name'].invalid &&  companyForm.controls['name'].touched"
+        class="invalid-feedback">
+        <ion-text color="danger" *ngIf="companyForm.controls['name'].errors.required">Company name is required
+        </ion-text>
+      </div>
+    </ion-item>
+    <ion-card class="cardWrap">
+      <!-- <ion-card-header>
+          <ion-card-title>Primary Contact</ion-card-title>
+        </ion-card-header> -->
+      <ion-card-content>
+        <ion-card-subtitle> Primary Contact:</ion-card-subtitle>
+        <ion-item color="ligherblue" lines="none">
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="firstContactName" name="firstContactName"></ion-input>
+          <div *ngIf="companyForm.controls['firstContactName'].invalid && 
+              companyForm.controls['firstContactName'].touched" class="invalid-feedback">
+            <ion-text color="danger" *ngIf="companyForm.controls['firstContactName'].errors.required">
+              Name is required</ion-text>
+          </div>
+        </ion-item>
+        <ion-item color="ligherblue" lines="none">
+          <ion-label position="floating">Mobile</ion-label>
+          <ion-input type="text" formControlName="firstContactMobile" name="firstContactMobile"></ion-input>
+          <div
+            *ngIf="companyForm.controls['firstContactMobile'].invalid &&  companyForm.controls['firstContactMobile'].touched"
+            class="invalid-feedback">
+            <ion-text color="danger" *ngIf="companyForm.controls['firstContactMobile'].errors.required">
+              Mobile number is required</ion-text>
+            <ion-text color="danger" *ngIf="companyForm.controls['firstContactMobile'].errors.maxlength">
+              Mobile number must be 10 characters</ion-text>
+          </div>
+        </ion-item>
+        <ion-item color="ligherblue" lines="none">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="firstContactEmail" name="firstContactEmail"></ion-input>
+          <div *ngIf="companyForm.controls['firstContactEmail'].invalid &&  
+              companyForm.controls['firstContactEmail'].touched" class="invalid-feedback">
+            <ion-text color="danger" *ngIf="companyForm.controls['firstContactEmail'].errors.required">
+              Email is required</ion-text>
+            <ion-text color="danger" *ngIf="companyForm.controls['firstContactEmail'].errors.email">Email
+              must be a valid email address</ion-text>
+
+          </div>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-subtitle>Secondary Contact:</ion-card-subtitle>
+        <ion-item lines="none">
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="secondContactName" name="secondContactName"></ion-input>
+          <!-- <div *ngIf="companyForm.controls['FirstContact'].controls['Email'].invalid &&  companyForm.controls['FirstContact'].controls['Email'].touched" class="invalid-feedback">
+          <ion-text color="danger" *ngIf="companyForm.controls['FirstContact'].controls['Email'].errors.required">Company name is required</ion-text>
+          </div> -->
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating">Mobile</ion-label>
+          <ion-input type="text" formControlName="secondContactMobile" name="secondContactMobile"></ion-input>
+          <div *ngIf="companyForm.controls['secondContactMobile'].invalid && 
+              companyForm.controls['secondContactMobile'].touched" class="invalid-feedback">
+            <ion-text color="danger" *ngIf="companyForm.controls['secondContactMobile'].errors.maxlength">
+              Mobile number must be 10 characters</ion-text>
+          </div>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="secondContactEmail" name="secondContactEmail"></ion-input>
+          <div *ngIf="companyForm.controls['secondContactEmail'].invalid &&  
+              companyForm.controls['secondContactEmail'].touched" class="invalid-feedback">
+            <ion-text color="danger" *ngIf="companyForm.controls['secondContactEmail'].errors.email">
+              Email must be a valid email address</ion-text>
+          </div>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-item lines="none">
+      <ion-label position="floating"> Address</ion-label>
+      <ion-textarea type="text" formControlName="address" name="address"></ion-textarea>
+
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="floating"> State</ion-label>
+      <!-- <ion-input type="text" formControlName="stateId" name="stateId"></ion-input> -->
+      <ion-select formControlName="stateId" (ionChange)="fnBindCityDD(companyForm.controls['stateId'].value)"
+        name="stateId" value="0" interface="popover">
+        <ion-select-option value="0">Select State</ion-select-option>
+        <ion-select-option [value]="state.id" *ngFor="let state of stateData">{{state.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="floating"> City</ion-label>
+      <!-- <ion-input type="text" formControlName="cityId" name="cityId"></ion-input> -->
+      <ion-select formControlName="cityId" name="cityId" value="0" interface="popover">
+        <ion-select-option value="0">Select City</ion-select-option>
+        <ion-select-option [value]="city.id" *ngFor="let city of cityData">{{city.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> Landmark</ion-label>
+      <ion-input type="text" formControlName="landmark" name="landmark"></ion-input>
+
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> Pincode</ion-label>
+      <ion-input type="text" formControlName="pinCode" name="pinCode"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Nature Of Business</ion-label>
+      <ion-select placeholder="Select One" formControlName="natureOfBusiness" name="BuisunessNature">
+        <ion-select-option [value]="bItem.id" *ngFor="let bItem of natureofBusilist">{{bItem.name}}</ion-select-option>
+        <!-- <ion-select-option [value]="/1">B2B</ion-select-option> -->
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating"> Credit Limit</ion-label>
+      <ion-input type="text" formControlName="creditLimit" name="creditLimit"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Company Type</ion-label>
+      <ion-input type="text" formControlName="companyType" name="companyType"></ion-input>
+    </ion-item>
+
+    <!-- <ion-button type="submit" color="toolbar" (click)="onSubmit()">Save</ion-button> -->
+    <div class="footerWrap ion-margin">
+      <ion-button type="submit" color="fybutton" shape="round" class="ion-text-capitalize"
+        [disabled]="companyForm.invalid" (click)="onSubmit()" size="small">{{actionType !== 'EDIT' ? 'Save' : 'Update'}}
+      </ion-button>
+    </div>
+
+  </form>
+
+</ion-content>

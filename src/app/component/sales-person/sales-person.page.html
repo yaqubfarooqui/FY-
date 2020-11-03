@@ -1,41 +1,26 @@
-
 <ion-header>
-  <ion-toolbar color="toolbar">
-    <ion-buttons slot="start">
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start" class="btnWrap">
       <ion-icon name="chevron-back-outline" slot="end" (click)="onBackButton()"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
     </ion-buttons>
-    <ion-title *ngIf="showSelected"><small>{{selectedSalesPerson.name}}</small></ion-title>
-    <ion-title *ngIf="!showSelected"><small>Sales Persons</small></ion-title>
-    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/edit')">
+    <ion-title *ngIf="showSelected" class="ion-text-center">{{selectedSalesPerson.name}}</ion-title>
+    <ion-title *ngIf="!showSelected" class="ion-text-center">Sales Persons</ion-title>
+    <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/sales-person/edit')">
       <ion-icon name="create-outline" slot="end" ></ion-icon>
     </ion-buttons> 
-    <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/home/salesPerson/add')">
+    <ion-buttons slot="end" *ngIf="!showSelected" class="ion-padding-end" (click)="navigate('/sales-person/add')">
       <ion-icon name="add" slot="end"></ion-icon>
     </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- <ion-buttons slot="start">
-    <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
-  </ion-buttons>
-  <ion-title>{{Name}}</ion-title>
-  <ion-buttons vertical="top" horizontal="end" slot="fixed" *ngIf="showSelected" icon-only >
-    <ion-icon name="create-outline" slot="end" (click)="navigate('/home/salesPerson/edit')"></ion-icon>
-  </ion-buttons> 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!showSelected" (click)="navigate('/home/salesPerson/add')">
-    <ion-fab-button size="mini">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> 
-   -->
-  <ion-list *ngIf="!showSelected">
-    <ion-item *ngFor="let salesPerson of salesPersonData;let i=index">
-
-      <div class="listWrap">
+<ion-content color="toolbar">
+  <ion-list *ngIf="!showSelected" lines="none" class="ion-no-padding">
+    <ion-item *ngFor="let salesPerson of salesPersonData;let i=index" class="listWrap ion-no-padding">
+      <!-- <div class="listWrap"> -->
         <ion-grid>
           <ion-row class="ion-align-items-center">
           <ion-col size="6">
@@ -46,13 +31,13 @@
             <h3 class="lblTitle">{{salesPerson.mobile1}}</h3>
             <p class="lblValue">{{salesPerson.email}}</p>
           </ion-col>
-          <ion-col size="2" >
-            <ion-icon color="primary" name="create-outline" (click)="navigate('/home/salesPerson/edit')"></ion-icon>
+          <ion-col size="2">
+            <ion-icon color="primary" name="create-outline" class="ion-margin-end" (click)="navigate('/sales-person/edit')"></ion-icon>
             <ion-icon color="danger" name="trash-outline" (click)="fnDelete(salesPerson.id)"></ion-icon>
           </ion-col>
         </ion-row>
         </ion-grid>
-      </div> 
+      <!-- </div>  -->
 <!-- 
 
       <ion-label (click)="showSelectedsalesPerson(i);">
@@ -70,7 +55,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-
-
-
- 

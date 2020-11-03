@@ -6,7 +6,7 @@ export const user = {
 };
 
 export const Company = {
-    get: HOST + '/Company'
+    get: HOST + '/BuyerSeller'
 };
 
 export const SalesPerson = {
@@ -17,7 +17,7 @@ export const PurchaseInvoice = {
     get: HOST + '/PurchaseInvoice/registerPurchaseInvoice'
 }
 export const Product = {
-    get: HOST + '/products'
+    get: HOST + '/Product'
 }
 export const State = {
     get:HOST + '/Master/State'

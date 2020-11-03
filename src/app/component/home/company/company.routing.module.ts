@@ -7,7 +7,7 @@ import {AddEditCompanyComponent} from './add-edit-company/add-edit-company.compo
 const routes: Routes = [
     {
         path: '',
-        component: CompanyPlaceholderComponent,
+        component: CompanyComponent,
         children: [
             {
                 path: 'edit',

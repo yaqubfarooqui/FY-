@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { SalesPersonModel } from 'src/app/Model/SalesPersonModel';
-import { SalesPersonProvider } from '../salesPersonProvider';
+import { SalesPersonProvider } from './salesPersonProvider';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
 @Component({
-  selector: 'app-salesPerson',
-  templateUrl: './salesPerson.component.html',
-  styleUrls: ['./salesPerson.component.scss'],
+  selector: 'app-sales-person',
+  templateUrl: './sales-person.page.html',
+  styleUrls: ['./sales-person.page.scss'],
 })
-export class SalesPersonComponent implements OnInit {
+export class SalesPersonPage implements OnInit {
 
+ 
   constructor(private sProvider: SalesPersonProvider, private router: Router, private location:Location) { }
 
   salesPersonData = [];
@@ -44,7 +44,7 @@ export class SalesPersonComponent implements OnInit {
   }
 
   navigate(navRoute: string): void {
-      if (navRoute === '/home/salesPerson/edit') {
+      if (navRoute === '/sales-person/edit') {
           this.sProvider.setcModel(this.selectedSalesPerson);
       }
       this.router.navigate([navRoute]);
@@ -67,4 +67,3 @@ export class SalesPersonComponent implements OnInit {
       this.loadSalesPerson();
   }
 }
- 
