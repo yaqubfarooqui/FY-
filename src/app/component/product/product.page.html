@@ -6,8 +6,8 @@
     <ion-buttons slot="start">
       <ion-icon name="chevron-back-outline" slot="end" *ngIf="showSelected" (click)="onBackPressed()"></ion-icon>
     </ion-buttons>
-    <ion-title class="ion-text-center" *ngIf="showSelected"><small>{{name}}</small></ion-title>
-    <ion-title *ngIf="!showSelected"><small>Products</small></ion-title>
+    <ion-title class="ion-text-center" *ngIf="showSelected">{{name}}</ion-title>
+    <ion-title *ngIf="!showSelected" class="ion-text-center">Products</ion-title>
     <ion-buttons slot="end" *ngIf="showSelected" class="ion-padding-end" (click)="navigate('/product/edit')">
       <ion-icon name="create-outline" slot="end" ></ion-icon>
     </ion-buttons> 
@@ -18,35 +18,28 @@
 </ion-header>
 
 <ion-content color="toolbar">
-
-  <ion-list *ngIf="!showSelected" class="ion-no-padding">
-    <ion-item *ngFor="let product of productData;let i=index" class="listWrap ion-no-padding">
-      <!-- <div class="listWrap"> -->
+  <ion-list *ngIf="!showSelected" lines="none" class="ion-no-padding">
+    <ion-item *ngFor="let product of productData;let i=index" class="listWrap ion-no-padding"> 
         <ion-grid>
           <ion-row class="ion-align-items-center">
           <ion-col size="6">
             <h3 class="lblTitle">{{product.name}}</h3>
-            <p class="lblValue">{{product.hsnCode}}</p>
+            <p class="lblValue">{{product.brand}}</p>
           </ion-col>
           <ion-col size="4">
-            <h3 class="lblTitle">{{product.brand}}</h3> 
+            <h3 class="lblTitle">{{product.hsnCode}}</h3>
+            <p class="lblValue">{{product.mass}}</p>
           </ion-col>
-          <ion-col size="2" >
+          <ion-col size="2">
             <ion-icon color="primary" name="create-outline" class="ion-margin-end" (click)="navigate('/product/edit')"></ion-icon>
             <ion-icon color="danger" name="trash-outline" (click)="fnDelete(product.id)"></ion-icon>
           </ion-col>
         </ion-row>
-        </ion-grid>
-      <!-- </div>    -->
-
-
-      <ion-label (click)="showSelectedProduct(i);">
-        <h3>{{product.Name}}</h3>          
-      </ion-label>        
+        </ion-grid> 
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf="showSelected">
+   <ion-list *ngIf="showSelected">
     <ion-item *ngFor="let ky of productLabels">
       <ion-label>
         <h3>{{productLabels[ky]}}</h3>

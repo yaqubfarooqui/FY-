@@ -14,12 +14,26 @@ export class AddEditProductPage implements OnInit {
   actionType = 'ADD';
   productName = 'Add Product';
   productForm: FormGroup;
+  lengthData = [{id:1,name:"Meter"},{id:2, name:"Centimeter"},{id:3,name:"Foot"},{id:4, name:"Inch"}];
+  volumeData = [{id:1,name:"Gallon"},{id:2, name:"Milliliter"},{id:3,name:"Liter"}]
+  massData = [{id:1,name:"Tonne"},{id:2, name:"Kg"},{id:3,name:"Gram"},{id:4, name:"Milligram"}]
+     
   constructor(private location: Location, private productProve: ProductProvider,
     private router: Router, private toastController: ToastController, private FB: FormBuilder) {
     this.productForm = this.FB.group({
-      Name: new FormControl('', [Validators.required]),
-      HSNCode: new FormControl('', [Validators.required]),
-      GST: new FormControl('', [Validators.required])
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      code: new FormControl('', [Validators.required]),
+      brand: new FormControl('', [Validators.required]),
+      quantity: new FormControl(0, [Validators.required]),
+      length: new FormControl('', [Validators.required]),
+      mass: new FormControl('', [Validators.required]),
+      volume: new FormControl('', [Validators.required]),
+      openningStock: new FormControl(0, [Validators.required]),
+      closingStock: new FormControl(0, [Validators.required]),
+      image: new FormControl('',[Validators.required]),
+      hsnCode: new FormControl('', [Validators.required]),
+      lowQuantityReminder: new FormControl('', [Validators.required])
     })
   }
 

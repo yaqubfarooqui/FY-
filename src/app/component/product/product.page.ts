@@ -3,6 +3,7 @@ import { ProductModel } from 'src/app/Model/ProductModel';
 import { ProductProvider } from './ProductProvider';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Product } from 'src/app/Model/PurchaseInvoiceModel';
 
 @Component({
   selector: 'app-product',
@@ -29,9 +30,9 @@ export class ProductPage implements OnInit {
   };
 
   private loadProduct() {
-      this.sProvider.getProductForUser().subscribe((data) => {
-          this.productData = data.Data;
-          this.selectedProduct = data.Data[0];
+      this.sProvider.getProductForUser().subscribe((data: any) => {
+          this.productData = data;
+          this.selectedProduct = data[0];
       });
   }
 

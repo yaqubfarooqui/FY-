@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content>
+  <ion-content color="toolbar">
     <!-- <ion-card>
       <ion-card-header>
         <ion-card-subtitle>User1</ion-card-subtitle>
@@ -13,29 +13,29 @@
       </ion-card-header>
       
     </ion-card> -->
-    <ion-list>
-      <ion-item (click)="navigate('/home')">
-        <ion-icon name="add" slot="start"></ion-icon>
+    <ion-list class="ion-no-padding">
+      <ion-item (click)="navigate('/home')" color="toolbar">
+        <ion-icon name="home" slot="start"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-item>
-      <ion-item (click)="navigate('/buyer-seller')">
-        <ion-icon name="speedometer" slot="start"></ion-icon>
+      <ion-item (click)="navigate('/buyer-seller')" color="toolbar">
+        <ion-icon name="cart" slot="start"></ion-icon>
         <ion-label>Buyer Seller</ion-label>
       </ion-item>
-      <ion-item (click)="navigate('/sales-person')">
+      <ion-item (click)="navigate('/sales-person')" color="toolbar">
         <ion-icon name="person" slot="start"></ion-icon>
         <ion-label>Sales Person</ion-label>
       </ion-item>
       
-      <ion-item (click)="navigate('/product')">
-        <ion-icon name="paper-plane" slot="start"></ion-icon>
+      <ion-item (click)="navigate('/product')" color="toolbar">
+        <ion-icon name="briefcase" slot="start"></ion-icon>
         <ion-label>Products</ion-label>
       </ion-item>
-      <ion-item (click)="navigate('/transaction')">
+      <ion-item (click)="navigate('/transaction')" color="toolbar">
         <ion-icon name="clipboard" slot="start"></ion-icon>
         <ion-label>Transction</ion-label>
       </ion-item>       
-      <ion-item (click)="logout()">
+      <ion-item (click)="logout()" color="toolbar">
         <ion-icon name="archive" slot="start"></ion-icon>
         <ion-label>Signout</ion-label>
       </ion-item>      
@@ -50,25 +50,25 @@
       </ion-buttons>
       <ion-toolbar-content class="ion-no-padding ion-padding-end ion-justify-content-between ion-align-items-center"> 
         <img src="../../../assets/img-logo-fy5.png" width="40px" alt="FY5">
-        <img src="../../../assets/ford-logo.png" slot="end" height="15px" width="40px" alt="FY5">
+        <!-- <img src="../../../assets/ford-logo.png" slot="end" height="15px" width="40px" alt="FY5"> -->
       </ion-toolbar-content>
     </ion-toolbar>
   </ion-header>
-<ion-content>
+<ion-content >
   <ion-grid>
     <ion-row class="ion-no-padding">
       <ion-col class="ion-no-margin">
-        <ion-card class="ion-no-margin">
+        <ion-card class="ion-no-margin" (click)="navigate('/buyer-seller')">
           <ion-card-header class="ion-text-center">
-            <ion-icon size="large" color="toolbar" name="speedometer"></ion-icon>
+            <ion-icon size="large" color="toolbar" name="cart"></ion-icon>
             <ion-card-subtitle>            
-              Company
+              Buyer Seller
             </ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col class="ion-no-margin">
-        <ion-card class="ion-no-margin">
+        <ion-card class="ion-no-margin" (click)="navigate('/sales-person')">
           <ion-card-header class="ion-text-center"> 
             <ion-icon size="large" color="toolbar" name="person"></ion-icon>
             <ion-card-subtitle>Sales Person</ion-card-subtitle>
@@ -78,18 +78,18 @@
     </ion-row>
     <ion-row class="ion-no-padding">
       <ion-col class="ion-no-margin">
-        <ion-card class="ion-no-margin">
+        <ion-card class="ion-no-margin" (click)="navigate('/product')">
           <ion-card-header class="ion-text-center">
-            <ion-icon size="large" color="toolbar" name="clipboard"></ion-icon>
-            <ion-card-subtitle>Invoice</ion-card-subtitle>
+            <ion-icon size="large" color="toolbar" name="briefcase"></ion-icon>
+            <ion-card-subtitle>Product</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col class="ion-no-margin">
-        <ion-card class="ion-no-margin">
+        <ion-card class="ion-no-margin" (click)="navigate('/transaction')">
           <ion-card-header class="ion-text-center">
-            <ion-icon size="large" color="toolbar" name="information-circle-outline"></ion-icon>
-            <ion-card-subtitle>Info</ion-card-subtitle>
+            <ion-icon size="large" color="toolbar" name="clipboard"></ion-icon>
+            <ion-card-subtitle>Transction</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>

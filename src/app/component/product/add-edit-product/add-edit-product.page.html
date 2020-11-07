@@ -19,32 +19,138 @@
   <form [formGroup]="productForm">
     <ion-item lines="none">
       <ion-label position="floating">Name </ion-label>
-      <ion-input type="text" formControlName="Name" name="Name"></ion-input>
-      <div *ngIf="productForm.controls['Name'].invalid &&  productForm.controls['Name'].touched"
+      <ion-input type="text" formControlName="name" name="name"></ion-input>
+      <div *ngIf="productForm.controls['name'].invalid &&  productForm.controls['name'].touched"
       class="invalid-feedback">
-      <ion-text color="danger" *ngIf="productForm.controls['Name'].errors.required">Name is required
+      <ion-text color="danger" *ngIf="productForm.controls['name'].errors.required">Name is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Description </ion-label>
+      <ion-input type="text" formControlName="description" name="description"></ion-input>
+      <div *ngIf="productForm.controls['description'].invalid && productForm.controls['description'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['description'].errors.required">GST is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Code </ion-label>
+      <ion-input type="text" formControlName="code" name="code"></ion-input>
+      <div *ngIf="productForm.controls['code'].invalid && productForm.controls['code'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['code'].errors.required">Code is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Brand </ion-label>
+      <ion-input type="text" formControlName="brand" name="brand"></ion-input>
+      <div *ngIf="productForm.controls['brand'].invalid && productForm.controls['brand'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['brand'].errors.required">Brand is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Quantity </ion-label>
+      <ion-input type="text" formControlName="quantity" name="quantity"></ion-input>
+      <div *ngIf="productForm.controls['quantity'].invalid && productForm.controls['quantity'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['quantity'].errors.required">Quantity is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Length </ion-label>
+      <!-- <ion-input type="text" formControlName="length" name="length"></ion-input> -->
+      <ion-select formControlName="length" 
+        name="length" value="0" interface="popover">
+        <ion-select-option value="0">Select Length</ion-select-option>
+        <ion-select-option [value]="l.id" *ngFor="let l of lengthData">{{l.name}}</ion-select-option>
+      </ion-select>
+      <div *ngIf="productForm.controls['length'].invalid && productForm.controls['length'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['length'].errors.required">Length is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Mass </ion-label>
+      <!-- <ion-input type="text" formControlName="mass" name="mass"></ion-input> -->
+      <ion-select formControlName="mass" 
+        name="mass" value="0" interface="popover">
+        <ion-select-option value="0">Select Mass</ion-select-option>
+        <ion-select-option [value]="m.id" *ngFor="let m of massData">{{m.name}}</ion-select-option>
+      </ion-select>
+      <div *ngIf="productForm.controls['mass'].invalid && productForm.controls['mass'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['mass'].errors.required">Mass is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Volume </ion-label>
+      <!-- <ion-input type="text" formControlName="volume" name="volume"></ion-input> -->
+      <ion-select formControlName="volume" 
+        name="volume" value="0" interface="popover">
+        <ion-select-option value="0">Select Volume</ion-select-option>
+        <ion-select-option [value]="v.id" *ngFor="let v of volumeData">{{v.name}}</ion-select-option>
+      </ion-select>
+      <div *ngIf="productForm.controls['volume'].invalid && productForm.controls['volume'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['volume'].errors.required">Volume is required
+      </ion-text>
+    </div>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Openning Stock</ion-label>
+      <ion-input type="text" formControlName="openningStock" name="openningStock"></ion-input>
+      <div *ngIf="productForm.controls['openningStock'].invalid && productForm.controls['openningStock'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['openningStock'].errors.required">Openning Stock is required
+      </ion-text>
+    </div>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-label position="floating">Closing Stock</ion-label>
+      <ion-input type="text" formControlName="closingStock" name="closingStock"></ion-input>
+      <div *ngIf="productForm.controls['closingStock'].invalid && productForm.controls['closingStock'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['closingStock'].errors.required">Closing Stock is required
+      </ion-text>
+    </div>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-label position="floating">Image </ion-label>
+      <ion-input type="text" formControlName="image" name="image"></ion-input>
+      <div *ngIf="productForm.controls['image'].invalid && productForm.controls['image'].touched"
+      class="invalid-feedback">
+      <ion-text color="danger" *ngIf="productForm.controls['image'].errors.required">Image is required
       </ion-text>
     </div>
     </ion-item>
     <ion-item lines="none">
       <ion-label position="floating">HSN Code </ion-label>
-      <ion-input type="text" formControlName="HSNCode" name="HSNCode"></ion-input>
-      <div *ngIf="productForm.controls['HSNCode'].invalid && productForm.controls['HSNCode'].touched"
+      <ion-input type="text" formControlName="hsnCode" name="hsnCode"></ion-input>
+      <div *ngIf="productForm.controls['hsnCode'].invalid && productForm.controls['hsnCode'].touched"
       class="invalid-feedback">
-      <ion-text color="danger" *ngIf="productForm.controls['HSNCode'].errors.required">HSN Code is required
+      <ion-text color="danger" *ngIf="productForm.controls['hsnCode'].errors.required">HSN Code is required
       </ion-text>
     </div>
     </ion-item>
     <ion-item lines="none">
-      <ion-label position="floating">GST </ion-label>
-      <ion-input type="text" formControlName="GST" name="GST"></ion-input>
-      <div *ngIf="productForm.controls['GST'].invalid && productForm.controls['GST'].touched"
+      <ion-label position="floating">Low Quantity Reminder </ion-label>
+      <ion-input type="text" formControlName="lowQuantityReminder" name="lowQuantityReminder"></ion-input>
+      <div *ngIf="productForm.controls['lowQuantityReminder'].invalid && productForm.controls['lowQuantityReminder'].touched"
       class="invalid-feedback">
-      <ion-text color="danger" *ngIf="productForm.controls['GST'].errors.required">GST is required
+      <ion-text color="danger" *ngIf="productForm.controls['lowQuantityReminder'].errors.required">Low Quantity Reminder is required
       </ion-text>
     </div>
-    </ion-item>
-    <!-- <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button> -->
+    </ion-item>     <!-- <ion-button type="submit" color="primary" (click)="onSubmit()">Save</ion-button> -->
     <div class="footerWrap ion-margin">
       <ion-button type="submit" color="fybutton" shape="round" class="ion-text-capitalize"
       [disabled]="productForm.invalid" (click)="onSubmit()" size="small">{{actionType !== 'Edit'?'Save':'Update'}}
